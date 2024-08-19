@@ -1,0 +1,64 @@
+{
+  "defaultRenderer": "fiori2",
+  "services": {
+    "AppState": {
+      "config": {
+        "transient": false
+      }
+    },
+    "LaunchPage": {
+      "adapter": {
+        "config": {
+          "catalogs": [],
+          "groups": [
+            {
+              "id": "SMPL",
+              "title": "CAP (Java) Fiori Elements and TypeScript Sample",
+              "isPreset": true,
+              "isVisible": true,
+              "isGroupLocked": false,
+              "tiles": [
+                {
+                  "id": "DisplaySamples",
+                  "tileType": "sap.ushell.ui.tile.StaticTile",
+                  "properties": {
+                    "title": "Display Samples",
+                    "targetURL": "#Samples-display"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "NavTargetResolution": {
+      "config": {
+        "enableClientSideTargetResolution": true
+      }
+    },
+    "ClientSideTargetResolution": {
+      "adapter": {
+        "config": {
+          "inbounds": {
+            "Sample": {
+              "semanticObject": "Samples",
+              "action": "display",
+              "title": "Display Samples",
+              "signature": {
+                "parameters": {
+                  "ID": {}
+                },
+                "additionalParameters": "ignored"
+              },
+              "resolutionResult": {
+                "applicationType": "SAPUI5",
+                "additionalInformation": "SAPUI5.Component=com.sap.cap.fe.ts.sample"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

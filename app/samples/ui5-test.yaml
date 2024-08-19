@@ -23,20 +23,6 @@ server:
       afterMiddleware: compression
       configuration:
         debug: false
-    - name: preview-middleware
-      afterMiddleware: compression
-      configuration:
-        flp:
-          path: localService/index.html
-          intent:
-            object: "Samples"
-            action: "display"
-        test:
-          - framework: "Testsuite"
-          - framework: "OPA5"
-            pattern: "/test/**/AllJourneys.*"
-          - framework: "Qunit"
-        debug: false
     - name: sap-fe-mockserver
       mountPath: /
       beforeMiddleware: csp
