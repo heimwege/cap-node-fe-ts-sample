@@ -1,0 +1,5 @@
+/dist
+/node_modules
+/target
+/localService/mockdata/*.js
+/localService/mockdata/*.js.map

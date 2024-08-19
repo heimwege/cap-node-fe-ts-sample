@@ -1,0 +1,38 @@
+{
+  "name": "cap-fe-ts-sample-node",
+  "version": "1.0.0",
+  "description": "Sample application for CAP (node) Fiori Elements TypeScript",
+  "repository": "https://github.com/SAP-samples/cap-fe-ts-sample-node",
+  "engines": {
+    "node": "^20.11.0"
+  },
+  "dependencies": {
+    "@sap/cds": "^8",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "1.7.3",
+    "@sap/cds-dk": "8.1.2",
+    "@sap/eslint-plugin-cds": "3.0.4",
+    "cds-plugin-ui5": "0.9.8",
+    "eslint": "9.7.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "build:cds": "cds build && npm --prefix app/samples run odata:types:generate",
+    "install:all": "npm install && npm --prefix app/samples install",
+    "ui:mockserver": "npm --prefix app/samples run ui:mockserver",
+    "ui:test": "npm --prefix app/samples run ui:test",
+    "e2e:test": "npm --prefix app/samples run e2e:test"
+  },
+  "cds": {
+    "cds-plugin-ui5": {
+      "modules": {
+        "samples": {
+          "configFile": "ui5-local.yaml"
+        }
+      }
+    }
+  }
+
+}

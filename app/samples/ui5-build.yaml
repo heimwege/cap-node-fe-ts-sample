@@ -1,0 +1,24 @@
+specVersion: '4.0'
+metadata:
+  name: com.sap.cap.fe.ts.sample
+  allowSapInternal: true
+type: application
+framework:
+  name: SAPUI5
+  version: 1.124.0
+builder:
+  resources:
+    excludes:
+      - "**/localService/**"
+      - "**/test/**"
+  customTasks:
+    - name: ui5-tooling-transpile-task
+      afterTask: replaceVersion
+      configuration:
+        debug: false
+    - name: ui5-task-zipper
+      afterTask: generateComponentPreload
+      configuration:
+        includeDependencies: false
+        archiveName: ui-sample-content
+        # additionalFiles:

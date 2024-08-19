@@ -1,0 +1,22 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "baseUrl": "./",
+    "paths": {
+      "com/sap/cap/fe/ts/sample/*": ["./webapp/*"]
+    },
+    "types": [
+      "@sap-ux/ui5-middleware-fe-mockserver",
+      "@sapui5/types",
+      "qunit",
+      "sinon",
+      "@wdio/globals",
+      "@wdio/globals/types",
+      "@wdio/mocha-framework",
+      "wdio-ui5-service/esm",
+      "expect-webdriverio",
+      "webdriverio/build"
+    ]
+  }
+}

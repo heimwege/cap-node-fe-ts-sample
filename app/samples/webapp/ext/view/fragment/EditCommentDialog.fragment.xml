@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog id="EditCommentDialog"
+            title="{i18n>editComment}"
+            resizable="false"
+            horizontalScrolling="false"
+            type="Message"
+            ariaLabelledBy="editComment"
+            verticalScrolling="false">
+        <content>
+            <TextArea id="editComment"
+                      width="100%"
+                      value="{text}"/>
+        </content>
+        <beginButton>
+            <Button id="closeDialog"
+                    type="Emphasized"
+                    press="onCloseDialog"
+                    text="{i18n>ok}"/>
+        </beginButton>
+    </Dialog>
+</core:FragmentDefinition>

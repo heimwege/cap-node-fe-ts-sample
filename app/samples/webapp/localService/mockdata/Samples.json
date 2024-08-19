@@ -1,0 +1,41 @@
+[
+  {
+    "ID": "09274d4a-b5c9-45ab-a776-60e1b4ad4cfc",
+    "modifiedAt": "2019-12-04T12:01:00Z",
+    "createdAt": "2019-12-04T12:00:00Z",
+    "createdBy": "michael.adams@example.com",
+    "modifiedBy": "system",
+    "name": "Test",
+    "comments": [],
+    "IsActiveEntity": true,
+    "HasActiveEntity": false,
+    "HasDraftEntity": false,
+    "DraftAdministrativeData": null
+  },
+  {
+    "ID": "09274d4a-b5c9-45ab-a776-60e1b4ad4cfd",
+    "modifiedAt": "2019-12-04T12:01:00Z",
+    "createdAt": "2019-12-04T12:00:00Z",
+    "createdBy": "michael.adams@example.com",
+    "modifiedBy": "system",
+    "name": "Foo",
+    "comments": [],
+    "IsActiveEntity": true,
+    "HasActiveEntity": false,
+    "HasDraftEntity": false,
+    "DraftAdministrativeData": null
+  },
+  {
+    "ID": "09274d4a-b5c9-45ab-a776-60e1b4ad4cfe",
+    "modifiedAt": "2019-12-04T12:01:00Z",
+    "createdAt": "2019-12-04T12:00:00Z",
+    "createdBy": "michael.adams@example.com",
+    "modifiedBy": "system",
+    "name": "Bar",
+    "comments": [],
+    "IsActiveEntity": true,
+    "HasActiveEntity": false,
+    "HasDraftEntity": false,
+    "DraftAdministrativeData": null
+  }
+]

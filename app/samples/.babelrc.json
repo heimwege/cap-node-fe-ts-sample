@@ -1,0 +1,14 @@
+{
+  "sourceMaps": true,
+  "ignore": [
+    "**/*.d.ts"
+  ],
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": "defaults"
+    }],
+    ["transform-ui5"],
+    "@babel/preset-typescript"
+  ],
+  "plugins": ["istanbul"]
+}

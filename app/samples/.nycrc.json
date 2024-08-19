@@ -1,0 +1,17 @@
+{
+    "extends": "@istanbuljs/nyc-config-babel",
+    "reporter": [
+        "cobertura",
+        "lcov",
+        "text-summary"
+    ],
+    "all": false,
+    "exclude": ["webapp/test/**", "webapp/localService/**"],
+    "check-coverage": true,
+    "branches": 90,
+    "lines": 90,
+    "functions": 90,
+    "statements": 90,
+    "temp-dir": "./target/.nyc_output",
+    "report-dir": "./target/coverage"
+}

@@ -1,0 +1,167 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "com.sap.cap.fe.ts.sample",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "crossNavigation": {
+      "inbounds": {
+        "Sample-display": {
+          "semanticObject": "Samples",
+          "action": "display",
+          "icon": "sap-icon://task",
+          "title": "{{appTitle}}",
+          "info": "{{appInfo}}",
+          "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+          },
+          "signature": {
+            "parameters": {
+              "ID": {}
+            },
+            "additionalParameters": "ignored"
+          }
+        }
+      },
+      "outbounds": {}
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "odata/v4/CapFeTsSampleService/",
+        "type": "OData",
+        "settings": {
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "offline": false,
+    "sourceTemplate": {
+      "id": "ui5template.fiorielements.v4.lrop",
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "dependencies": {
+      "minUI5Version": "1.108.16",
+      "libs": {
+        "sap.fe.templates": {},
+        "sap.ui.core": {},
+        "sap.m": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "SampleListReport",
+          "target": "SampleListReport"
+        },
+        {
+          "pattern": "Samples({key}):?query:",
+          "name": "SampleObjectPage",
+          "target": "SampleObjectPage"
+        }
+      ],
+      "targets": {
+        "SampleListReport": {
+          "type": "Component",
+          "id": "SampleListReport",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "entitySet": "Samples",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "enableExport": true,
+                    "selectionMode": "None"
+                  }
+                },
+                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                  "useSemanticDateRange": true
+                }
+              },
+              "initialLoad": true,
+              "variantManagement": "Page",
+              "navigation": {
+                "Samples": {
+                  "detail": {
+                    "route": "SampleObjectPage"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "SampleObjectPage": {
+          "type": "Component",
+          "id": "SampleObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "entitySet": "Samples",
+              "enhanceI18n": "i18n/i18n.properties",
+              "editableHeaderContent": true,
+              "content": {
+                "body": {
+                  "sections": {
+                    "CommentsSection" : {
+                      "template": "com.sap.cap.fe.ts.sample.ext.view.fragment.CommentsSection",
+                      "title": "{i18n>comments}"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController#com.sap.cap.fe.ts.sample::SampleObjectPage": {
+            "controllerNames": [
+              "com.sap.cap.fe.ts.sample.ext.controller.CommentsSection"
+            ]
+          }
+        }
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    }
+  }
+}

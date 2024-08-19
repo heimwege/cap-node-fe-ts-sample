@@ -1,0 +1,43 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+                         xmlns="sap.m"
+                         xmlns:layout="sap.ui.layout">
+    <layout:VerticalLayout width="100%">
+        <FeedInput id="CommentsInput"
+                   post=".extension.com.sap.cap.fe.ts.sample.ext.controller.CommentsSection.onPostComment"
+                   maxLength="255"
+                   showExceededText="true"
+                   visible ="{= %{ui>/editMode} === 'Editable'}"
+                   class="sapUiSmallMarginTopBottom"/>
+        <List id="CommentsList"
+              showSeparators="Inner"
+              items="{
+                    path: 'comments',
+                    templateShareable: false,
+                    parameters : {
+                        $$ownRequest: true
+                    },
+                    sorter: {
+                        path: 'createdAt'
+                    }
+              }">
+            <FeedListItem sender="{createdBy}"
+                          senderActive="true"
+                          icon="sap-icon://employee"
+                          iconDisplayShape="Square"
+                          iconActive="false"
+                          timestamp="{createdAt}"
+                          text="{text}"
+                          info="{type}"
+                          convertLinksToAnchorTags="All">
+                <FeedListItemAction icon="sap-icon://edit"
+                                    text="{i18n>edit}"
+                                    visible ="{= %{ui>/editMode} === 'Editable'}"
+                                    press=".extension.com.sap.cap.fe.ts.sample.ext.controller.CommentsSection.onEditComment" />
+                <FeedListItemAction icon="sap-icon://decline"
+                                    text="{i18n>delete}"
+                                    visible ="{= %{ui>/editMode} === 'Editable'}"
+                                    press=".extension.com.sap.cap.fe.ts.sample.ext.controller.CommentsSection.onDeleteComment" />
+            </FeedListItem>
+        </List>
+    </layout:VerticalLayout>
+</core:FragmentDefinition>

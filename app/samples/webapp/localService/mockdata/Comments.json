@@ -1,0 +1,10 @@
+[
+    {
+      "ID": "72f985e3-5322-458d-8230-4bd737bd9799",
+      "text": "test comment text",
+      "type": null,
+      "sample_ID": "09274d4a-b5c9-45ab-a776-60e1b4ad4cfc",
+      "createdAt": "2019-11-19T12:00:00Z",
+      "createdBy": "michael.adams@example.com"
+    }
+]

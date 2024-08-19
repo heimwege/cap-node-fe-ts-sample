@@ -1,0 +1,43 @@
+# Do not include generated sources...
+**/gen/**
+# ...except generated types from odata2ts
+!/**/types/gen/**
+
+# No generated .js files for the mockserver
+**/webapp/localService/mockdata/*.js
+**/webapp/localService/mockdata/*.js.*
+
+# CAP cap-fe-ts-sample-node
+_out
+*.db
+*.sqlite
+connection.properties
+default-*.json
+.cdsrc-private.json
+**/node_modules/
+**/target/
+**/dist/
+
+# Web IDE, App Studio
+.che/
+.gen/
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+
+# Other
+.DS_Store
+*.orig
+*.log
+
+*.iml
+*.flattened-pom.xml
+
+# IDEs
+.vscode
+.idea
+
+# @cap-js/cds-typer
+@cds-models
