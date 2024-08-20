@@ -8,7 +8,7 @@ frontend (List Report and Object Page with a custom section controller extension
 
 - checkout repo
 - `npm run install:all`
-- `npm run ui:mockserver`
+- `npm run ui:mockserver` (for standalone UI mock server)
 - `npm run start` (for integration into CDS server)
 
 # How to run the tests?
