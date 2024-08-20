@@ -2,7 +2,7 @@
   "name": "cap-fe-ts-sample-node",
   "version": "1.0.0",
   "description": "Sample application for CAP (node) Fiori Elements TypeScript",
-  "repository": "https://github.com/SAP-samples/cap-fe-ts-sample-node",
+  "repository": "https://github.com/heimwege/cap-node-fe-ts-sample",
   "engines": {
     "node": "^20.11.0"
   },
