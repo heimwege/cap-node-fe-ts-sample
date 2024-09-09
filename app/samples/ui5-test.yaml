@@ -46,3 +46,7 @@ server:
           - urlPath: '/odata/v4/CapFeTsSampleService'
             metadataPath: './webapp/localService/metadata.xml'
             mockdataPath: './webapp/localService/mockdata'
+    - name: ui5-tooling-modules-middleware
+      afterMiddleware: compression
+      configuration:
+        debug: false

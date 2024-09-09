@@ -1,5 +1,6 @@
 import CommentsSectionController from "com/sap/cap/fe/ts/sample/ext/controller/CommentsSection.controller";
-import * as Sinon from "sinon";
+//@ts-expect-error: sinon version available at runtime thanks to uio5-tooling-modules
+import * as Sinon from "com/sap/cap/fe/ts/sample/resources/sinon";
 import ResourceModel from "sap/ui/model/resource/ResourceModel";
 import type ResourceBundle from "sap/base/i18n/ResourceBundle";
 import type Event from "sap/ui/base/Event";

@@ -6,6 +6,7 @@
 # No generated .js files for the mockserver
 **/webapp/localService/mockdata/*.js
 **/webapp/localService/mockdata/*.js.*
+**/.ui5-tooling-modules/**
 
 # CAP cap-fe-ts-sample-node
 _out
