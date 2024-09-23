@@ -39,9 +39,12 @@ server:
       beforeMiddleware: csp
       configuration:
         debug: false
+        metadataProcessor:
+          name: "@sap-ux/fe-mockserver-plugin-cds"
         services:
           - urlPath: '/odata/v4/CapFeTsSampleService'
-            metadataPath: './webapp/localService/metadata.xml'
+#            metadataPath: './webapp/localService/metadata.xml'
+            metadataPath: './ui-annotations.cds'
             mockdataPath: './webapp/localService/mockdata'
 
 ## the fiori tools proxy can be used to overrule the UI5 version in case untested or nightly should be used
