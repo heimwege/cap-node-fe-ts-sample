@@ -23,8 +23,10 @@ server:
       afterMiddleware: compression
       configuration:
         debug: false
-    - name: preview-middleware
+    - name: ui5-middleware-livereload
       afterMiddleware: compression
+    - name: preview-middleware
+      afterMiddleware: ui5-middleware-livereload
       configuration:
         flp:
           path: localService/index.html
@@ -32,8 +34,6 @@ server:
             object: "Samples"
             action: "display"
         debug: false
-    - name: ui5-middleware-livereload
-      afterMiddleware: compression
     - name: sap-fe-mockserver
       mountPath: /
       beforeMiddleware: csp
