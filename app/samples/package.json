@@ -7,6 +7,7 @@
   },
   "scripts": {
     "ui:mockserver": "npm run build:ts:mockserver && ui5 serve -o localService/index.html?sap-ui-xx-viewCache=false#Samples-display --config ./ui5-local.yaml",
+    "ui:cap": "npm run build:ts:mockserver && ui5 serve -o localService/index.html?sap-ui-xx-viewCache=false#Samples-display --config ./ui5-with-cap.yaml",
     "ui:opa5": "npm run build:ts:mockserver && ui5 serve -o test/opaTests.qunit.html --config ./ui5-test.yaml",
     "ui:qunit": "npm run build:ts:mockserver && ui5 serve -o test/unitTests.qunit.html --config ./ui5-test.yaml",
     "build:sample": "npm run ts:typecheck && npm run ui5lint && ui5 build --config=./ui5-build.yaml --clean-dest --dest ./dist",
@@ -38,6 +39,7 @@
     "@sap-ux/preview-middleware": "0.16.48",
     "@sap-ux/ui5-middleware-fe-mockserver": "2.2.53",
     "@sap/ux-ui5-tooling": "1.14.2",
+    "ui5-middleware-cap": "3.3.0",
     "@sapui5/types": "1.124.0",
     "@types/qunit": "2.5.4",
     "@types/sinon": "17.0.3",
