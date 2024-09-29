@@ -40,6 +40,7 @@
     "@sap-ux/ui5-middleware-fe-mockserver": "2.2.53",
     "@sap/ux-ui5-tooling": "1.14.2",
     "ui5-middleware-cap": "3.3.0",
+    "cap-fe-ts-sample-node": "file:../..",
     "@sapui5/types": "1.124.0",
     "@types/qunit": "2.5.4",
     "@types/sinon": "17.0.3",
@@ -81,8 +82,5 @@
         "path": "./target/checkstyle-result.xml"
       }
     ]
-  },
-  "dependencies": {
-    "cap-fe-ts-sample-node": "file:../.."
   }
 }
