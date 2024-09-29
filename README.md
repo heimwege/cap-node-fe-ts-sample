@@ -9,7 +9,8 @@ frontend (List Report and Object Page with a custom section controller extension
 - checkout repo
 - `npm run install:all`
 - `npm run ui:mockserver` (for standalone UI mock server)
-- `npm run start` (for integration into CDS server)
+- `npm run start` (for integration of UI5 server into CDS server)
+- `npm run ui:cap` (for integration of CDS server into UI5 server)
 
 # How to run the tests?
 
@@ -30,7 +31,7 @@ frontend (List Report and Object Page with a custom section controller extension
 # What does the repo contain?
 
 - Transpile TypeScript sources to JavaScript on browser request ([ui5-tooling-transpile](https://www.npmjs.com/package/ui5-tooling-transpile))
-- Integration of UI5 project into CDS server ([cds-plugin-ui5](https://www.npmjs.com/package/cds-plugin-ui5))
+- Integration of UI5 server into CDS server or vice versa ([cds-plugin-ui5](https://www.npmjs.com/package/cds-plugin-ui5), [ui5-middleware-cap](https://www.npmjs.com/package/ui5-middleware-cap))
 - Generate TypeScript types of the service metadata document ([odata2ts](https://www.npmjs.com/package/@odata2ts/odata2ts))
 - OData v4 Mockserver to run the UI standalone ([@sap-ux/ui5-middleware-fe-mockserver](https://www.npmjs.com/package/@sap-ux/ui5-middleware-fe-mockserver))
 - Generate Sandbox Launchpad to run the UI and tests standalone ([@sap-ux/preview-middleware](https://www.npmjs.com/package/@sap-ux/preview-middleware))
