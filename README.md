@@ -11,6 +11,7 @@ frontend (List Report and Object Page with a custom section controller extension
 - `npm run ui:mockserver` (for standalone UI mock server)
 - `npm run start` (for integration of UI5 server into CDS server)
 - `npm run ui:cap` (for integration of CDS server into UI5 server)
+- `npm run ui:rta` (for standalone UI mock server with runtime adaptation)
 
 # How to run the tests?
 
@@ -34,7 +35,7 @@ frontend (List Report and Object Page with a custom section controller extension
 - Integration of UI5 server into CDS server or vice versa ([cds-plugin-ui5](https://www.npmjs.com/package/cds-plugin-ui5), [ui5-middleware-cap](https://www.npmjs.com/package/ui5-middleware-cap))
 - Generate TypeScript types of the service metadata document ([odata2ts](https://www.npmjs.com/package/@odata2ts/odata2ts))
 - OData v4 Mockserver to run the UI standalone ([@sap-ux/ui5-middleware-fe-mockserver](https://www.npmjs.com/package/@sap-ux/ui5-middleware-fe-mockserver))
-- Generate Sandbox Launchpad to run the UI and tests standalone ([@sap-ux/preview-middleware](https://www.npmjs.com/package/@sap-ux/preview-middleware))
+- Generate Sandbox Launchpad to run the UI, tests and runtime adaptation standalone ([@sap-ux/preview-middleware](https://www.npmjs.com/package/@sap-ux/preview-middleware))
 - Unit tests ([QUnit](https://qunitjs.com/))
 - Integration tests ([OPA5](https://sapui5.hana.ondemand.com/#/api/sap.ui.test.Opa5), [sap.fe.test](https://sapui5.hana.ondemand.com/sdk/#/api/sap.fe.test))
 - Test runner for Unit- and Integration tests including code coverage and test coverage reporting ([ui5-test-runner](https://www.npmjs.com/package/ui5-test-runner))

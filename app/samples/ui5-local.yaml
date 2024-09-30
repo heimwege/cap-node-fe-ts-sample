@@ -33,6 +33,10 @@ server:
           intent:
             object: "Samples"
             action: "display"
+        rta:
+          editors:
+            - path: /preview.html
+          debug: false
         debug: false
     - name: sap-fe-mockserver
       mountPath: /

@@ -7,6 +7,7 @@
   },
   "scripts": {
     "ui:mockserver": "npm run build:ts:mockserver && ui5 serve -o localService/index.html?sap-ui-xx-viewCache=false#Samples-display --config ./ui5-local.yaml",
+    "ui:rta": "ui5 serve --open \"preview.html?fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#Samples-display\" --config ./ui5-local.yaml",
     "ui:cap": "npm run build:ts:mockserver && ui5 serve -o localService/index.html?sap-ui-xx-viewCache=false#Samples-display --config ./ui5-with-cap.yaml",
     "ui:opa5": "npm run build:ts:mockserver && ui5 serve -o test/opaTests.qunit.html --config ./ui5-test.yaml",
     "ui:qunit": "npm run build:ts:mockserver && ui5 serve -o test/unitTests.qunit.html --config ./ui5-test.yaml",
@@ -36,7 +37,7 @@
     "@istanbuljs/nyc-config-babel": "3.0.0",
     "@odata2ts/odata2ts": "0.36.1",
     "@sap-ux/eslint-plugin-fiori-tools": "0.5.0",
-    "@sap-ux/preview-middleware": "0.16.48",
+    "@sap-ux/preview-middleware": "0.16.74",
     "@sap-ux/ui5-middleware-fe-mockserver": "2.2.53",
     "@sap/ux-ui5-tooling": "1.14.2",
     "ui5-middleware-cap": "3.3.0",
