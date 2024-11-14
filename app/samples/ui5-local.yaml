@@ -46,6 +46,7 @@ server:
 #            metadataPath: './webapp/localService/metadata.xml'
             metadataPath: './ui-annotations.cds'
             mockdataPath: './webapp/localService/mockdata'
+            i18nPath: '../../srv/i18n'
 
 ## the fiori tools proxy can be used to overrule the UI5 version in case untested or nightly should be used
 #    - name: fiori-tools-proxy
