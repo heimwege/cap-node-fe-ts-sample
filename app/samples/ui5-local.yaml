@@ -43,7 +43,6 @@ server:
           name: "@sap-ux/fe-mockserver-plugin-cds"
         services:
           - urlPath: '/odata/v4/CapFeTsSampleService'
-#            metadataPath: './webapp/localService/metadata.xml'
             metadataPath: './ui-annotations.cds'
             mockdataPath: './webapp/localService/mockdata'
             i18nPath: '../../srv/i18n'
