@@ -34,28 +34,5 @@ server:
             object: "Samples"
             action: "display"
         debug: false
-    - name: sap-fe-mockserver
-      mountPath: /
-      beforeMiddleware: csp
-      configuration:
-        debug: false
-        metadataProcessor:
-          name: "@sap-ux/fe-mockserver-plugin-cds"
-        services:
-          - urlPath: '/odata/v4/CapFeTsSampleService'
-            metadataPath: './ui-annotations.cds'
-            mockdataPath: './webapp/localService/mockdata'
-            i18nPath: '../../srv/i18n'
-
-## the fiori tools proxy can be used to overrule the UI5 version in case untested or nightly should be used
-#    - name: fiori-tools-proxy
-#      afterMiddleware: sap-fe-mockserver
-#      configuration:
-#        ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
-#        ui5:
-#          paths:
-#            - path: /resources
-#              url: https://sapui5.hana.ondemand.com/
-#            - path: /test-resources
-#              url: https://sapui5.hana.ondemand.com/
-#          version: 1.124.0 # The UI5 version, for instance, 1.78.1. Empty means minUI5Version from manifest.json is used
+    - name: ui5-middleware-cap
+      afterMiddleware: compression
