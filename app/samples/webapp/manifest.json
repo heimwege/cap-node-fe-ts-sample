@@ -37,7 +37,6 @@
         "uri": "odata/v4/CapFeTsSampleService/",
         "type": "OData",
         "settings": {
-          "localUri": "localService/metadata.xml",
           "odataVersion": "4.0"
         }
       }
