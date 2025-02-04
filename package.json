@@ -26,6 +26,9 @@
     "ui:test": "npm --prefix app/samples run ui:test",
     "e2e:test": "npm --prefix app/samples run e2e:test"
   },
+  "workspaces": [
+    "app/*"
+  ],
   "cds": {
     "cds-plugin-ui5": {
       "modules": {
