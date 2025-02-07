@@ -7,6 +7,7 @@
   },
   "scripts": {
     "ui:mockserver": "npm run build:ts:mockserver && ui5 serve -o localService/index.html?sap-ui-xx-viewCache=false#Samples-display --config ./ui5-local.yaml",
+    "ui:mockserver:test": "npm run build:ts:mockserver && ui5 serve -o localService/index.html?sap-ui-xx-viewCache=false#Samples-display --config ./ui5-test.yaml",
     "ui:opa5": "npm run build:ts:mockserver && ui5 serve -o test/integration/opaTests.qunit.html --config ./ui5-test.yaml",
     "ui:qunit": "npm run build:ts:mockserver && ui5 serve -o test/unit/unitTests.qunit.html --config ./ui5-test.yaml",
     "build:sample": "npm run ts:typecheck && npm run ui5lint && ui5 build --config=./ui5-build.yaml --clean-dest --dest ./dist",
