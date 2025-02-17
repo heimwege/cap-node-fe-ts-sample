@@ -7,7 +7,7 @@ frontend (List Report and Object Page with a custom section controller extension
 # How to run the app?
 
 - checkout repo
-- `npm run install:all`
+- `npm run install`
 - `npm run ui:mockserver` (for standalone UI mock server)
 - `npm run start` (for integration of UI5 server into CDS server)
 - `npm run ui:cap` (for integration of CDS server into UI5 server)
