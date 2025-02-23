@@ -16,6 +16,10 @@ builder:
       afterTask: replaceVersion
       configuration:
         debug: false
+    - name: ui5-task-check-eocp
+      afterTask: replaceVersion
+      configuration:
+        failOnEocp: true
     - name: ui5-task-zipper
       afterTask: generateComponentPreload
       configuration:
