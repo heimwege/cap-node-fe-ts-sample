@@ -1,12 +1,13 @@
 import opaTest from "sap/ui/test/opaQunit";
 import type { Given, When, Then } from "com/sap/cap/fe/ts/sample/test/integration/types/OpaJourneyTypes";
+import runner from "./pages/JourneyRunner";
 
 // Currently open type errors:
 // - sap.fe.test onTable "vTableIdentifier" should be optional
 // - opa5.waitFor returns type Opa5 -> chaining of custom actions/assertions not possible
 // - sap.fe.test actions/assertions return type "object" does not contain "and" -> chaining not possible
 
-export default function () {
+function journey() {
     // there should be no blanks in Qunit module name in case of a piper based traceability mapping
     QUnit.module("ListReport");
 
@@ -57,3 +58,5 @@ export default function () {
         Given.iTearDownMyApp();
     });
 }
+
+runner.run([journey]);
