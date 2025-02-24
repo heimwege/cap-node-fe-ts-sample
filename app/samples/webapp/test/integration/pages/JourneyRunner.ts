@@ -1,15 +1,9 @@
+import JourneyRunner from "sap/fe/test/JourneyRunner";
 import ListReport from "sap/fe/test/ListReport";
 import ObjectPage from "sap/fe/test/ObjectPage";
 import CustomObjectPage from "com/sap/cap/fe/ts/sample/test/integration/pages/ObjectPage";
 import CustomListReport from "com/sap/cap/fe/ts/sample/test/integration/pages/ListReport";
-import JourneyRunner from "sap/fe/test/JourneyRunner";
-import ObjectPageJourney from "com/sap/cap/fe/ts/sample/test/integration/ObjectPageJourney";
-import ListReportJourney from "com/sap/cap/fe/ts/sample/test/integration/ListReportJourney";
-import type { Config as JourneyRunner$OpaConfig } from "sap/ui/test/Opa5";
-
-// Currently open type errors:
-// - property contextPath in oPageDefinition object of ListReport Constructor should be optional
-// - property contextPath in oPageDefinition object of ObjectPage Constructor should be optional
+import type {Config as JourneyRunner$OpaConfig} from "sap/ui/test/Opa5";
 
 type JourneyRunner$Pages = Record<string, ListReport | ObjectPage>;
 
@@ -19,9 +13,11 @@ type JourneyRunner$Pages = Record<string, ListReport | ObjectPage>;
 const appId = "com.sap.cap.fe.ts.sample";
 
 /**
- * Start JourneyRunner that executes all journeys
+ * JourneyRunner that executes the journey
  */
-getJourneyRunner().run([ListReportJourney, ObjectPageJourney]);
+const runner = getJourneyRunner();
+
+export default runner;
 
 /**
  * Defines an object containing pages that are used to configure the sap.fe.test.JourneyRunner.

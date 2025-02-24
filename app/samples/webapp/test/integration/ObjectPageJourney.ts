@@ -1,7 +1,8 @@
 import opaTest from "sap/ui/test/opaQunit";
 import type { Given, When, Then } from "com/sap/cap/fe/ts/sample/test/integration/types/OpaJourneyTypes";
+import runner from "./pages/JourneyRunner";
 
-export default function () {
+function journey() {
     // there should be no blanks in Qunit module name in case of a piper based traceability mapping
     QUnit.module("ObjectPage");
 
@@ -79,3 +80,5 @@ export default function () {
         Given.iTearDownMyApp();
     });
 }
+
+runner.run([journey]);

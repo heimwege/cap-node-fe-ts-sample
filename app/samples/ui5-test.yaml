@@ -34,7 +34,6 @@ server:
         test:
           - framework: "Testsuite"
           - framework: "OPA5"
-            pattern: "/test/**/AllJourneys.*"
           - framework: "Qunit"
         debug: false
     - name: sap-fe-mockserver
