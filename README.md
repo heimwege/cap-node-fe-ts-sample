@@ -46,9 +46,9 @@ frontend (List Report and Object Page with a custom section controller extension
   - Generate Sandbox Launchpad to run the UI and tests standalone ([@sap-ux/preview-middleware](https://www.npmjs.com/package/@sap-ux/preview-middleware))
   - Integration of CDS server into UI5 server ([ui5-middleware-cap](https://www.npmjs.com/package/ui5-middleware-cap))
 - UI5 builder tasks
-  - Check expiring End of Cloud Provisioning date [ui5-task-check-eocp](https://www.npmjs.com/package/ui5-task-check-eocp)
-  - Zipping project resources [ui5-task-zipper](https://www.npmjs.com/package/ui5-task-zipper)
-  - Transpile TypeScript sources to JavaScript during build [ui5-tooling-transpile-task](https://www.npmjs.com/package/ui5-tooling-transpile)
+  - Check expiring End of Cloud Provisioning date ([ui5-task-check-eocp](https://www.npmjs.com/package/ui5-task-check-eocp))
+  - Zipping project resources ([ui5-task-zipper](https://www.npmjs.com/package/ui5-task-zipper))
+  - Transpile TypeScript sources to JavaScript during build ([ui5-tooling-transpile-task](https://www.npmjs.com/package/ui5-tooling-transpile))
 
 # What does the repo not contain?
 
