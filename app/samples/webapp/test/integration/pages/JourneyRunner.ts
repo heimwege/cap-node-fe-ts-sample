@@ -15,9 +15,7 @@ const appId = "com.sap.cap.fe.ts.sample";
 /**
  * JourneyRunner that executes the journey
  */
-const runner = getJourneyRunner();
-
-export default runner;
+export default getJourneyRunner();
 
 /**
  * Defines an object containing pages that are used to configure the sap.fe.test.JourneyRunner.
