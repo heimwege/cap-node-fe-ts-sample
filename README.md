@@ -43,7 +43,7 @@ frontend (List Report and Object Page with a custom section controller extension
 - UI5 server middlewares
   - Transpile TypeScript sources to JavaScript on browser request ([ui5-tooling-transpile](https://www.npmjs.com/package/ui5-tooling-transpile))
   - OData v4 Mockserver to run the UI standalone ([@sap-ux/ui5-middleware-fe-mockserver](https://www.npmjs.com/package/@sap-ux/ui5-middleware-fe-mockserver))
-  - Generate Sandbox Launchpad to run the UI and tests standalone ([@sap-ux/preview-middleware](https://www.npmjs.com/package/@sap-ux/preview-middleware))
+  - Virtual endpoints for Sandbox Launchpad to run the UI and tests ([@sap-ux/preview-middleware](https://www.npmjs.com/package/@sap-ux/preview-middleware))
   - Integration of CDS server into UI5 server ([ui5-middleware-cap](https://www.npmjs.com/package/ui5-middleware-cap))
 - UI5 builder tasks
   - Check expiring End of Cloud Provisioning date ([ui5-task-check-eocp](https://www.npmjs.com/package/ui5-task-check-eocp))
