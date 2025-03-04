@@ -13,6 +13,7 @@ framework:
     - name: sap.ui.layout
     - name: sap.m
     - name: themelib_sap_horizon          # Theme
+    - name: sap.fe.test                   # Fiori Elements test library
     - name: sap.ushell                    # FLP sandbox
     - name: sap.suite.ui.generic.template # dependency of ushell
     - name: sap.ui.generic.template       # dependency of sap.suite.ui.generic.template
@@ -33,6 +34,10 @@ server:
           intent:
             object: "Samples"
             action: "display"
+        test:
+          - framework: "Testsuite"
+          - framework: "OPA5"
+          - framework: "Qunit"
         debug: false
     - name: sap-fe-mockserver
       mountPath: /
@@ -43,16 +48,3 @@ server:
           - urlPath: '/odata/v4/CapFeTsSampleService'
             metadataPath: './webapp/localService/metadata.xml'
             mockdataPath: './webapp/localService/mockdata'
-
-## the fiori tools proxy can be used to overrule the UI5 version in case untested or nightly should be used
-#    - name: fiori-tools-proxy
-#      afterMiddleware: sap-fe-mockserver
-#      configuration:
-#        ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
-#        ui5:
-#          paths:
-#            - path: /resources
-#              url: https://sapui5.hana.ondemand.com/
-#            - path: /test-resources
-#              url: https://sapui5.hana.ondemand.com/
-#          version: 1.124.0 # The UI5 version, for instance, 1.78.1. Empty means minUI5Version from manifest.json is used
