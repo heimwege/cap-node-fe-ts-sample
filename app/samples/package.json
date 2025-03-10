@@ -65,7 +65,7 @@
     "typescript": "5.7.3",
     "ui5-middleware-livereload": "3.1.0",
     "ui5-task-zipper": "3.4.0",
-    "ui5-test-runner": "5.4.3",
+    "ui5-test-runner": "5.5.0",
     "ui5-task-check-eocp": "0.0.6",
     "ui5-tooling-transpile": "3.7.1",
     "wdio-timeline-reporter": "5.1.4",
