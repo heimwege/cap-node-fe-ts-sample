@@ -5,13 +5,14 @@ metadata:
 type: application
 framework:
   name: SAPUI5
-  version: 1.132.0
+  version: 1.134.0
   libraries:
     - name: sap.fe.templates
     - name: sap.ui.codeeditor             # Display of Fiori Elements rendering Errors
     - name: sap.ui.core
     - name: sap.ui.layout
     - name: sap.m
+    - name: sap.cux.home                  # needed for enhancedHomePage
     - name: themelib_sap_horizon          # Theme
     - name: sap.fe.test                   # Fiori Elements test library
     - name: sap.ushell                    # FLP sandbox
@@ -30,6 +31,7 @@ server:
       afterMiddleware: ui5-middleware-livereload
       configuration:
         flp:
+          #enhancedHomePage: true
           path: localService/index.html
           intent:
             object: "Samples"

@@ -15,6 +15,7 @@ server:
       afterMiddleware: compression
       configuration:
         flp:
+          #enhancedHomePage: true
           path: localService/index.html
           intent:
             object: "Samples"
@@ -36,7 +37,7 @@ server:
         ui5:
           paths:
             - path: /resources
-              url: https://sapui5.hana.ondemand.com/
+              url: https://sapui5untestedv2.int.sap.eu2.hana.ondemand.com/
             - path: /test-resources
-              url: https://sapui5.hana.ondemand.com/
-          version: 1.132.0 # The UI5 version, for instance, 1.78.1. Empty means minUI5Version from manifest.json is used
+              url: https://sapui5untestedv2.int.sap.eu2.hana.ondemand.com/
+          version: 1.134.0
