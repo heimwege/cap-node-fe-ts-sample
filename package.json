@@ -28,6 +28,9 @@
   "workspaces": [
     "app/*"
   ],
+  "sapux": [
+    "app/samples"
+  ],
   "cds": {
     "cds-plugin-ui5": {
       "modules": {
