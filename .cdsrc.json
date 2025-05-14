@@ -1,1 +1,11 @@
-{}
+{
+  "build": {
+    "target": ".",
+    "tasks": [
+      {
+        "for": "fiori",
+        "src": "app/samples"
+      }
+    ]
+  }
+}

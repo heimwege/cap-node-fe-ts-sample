@@ -43,6 +43,32 @@ annotate CapFeTsSampleService.Samples with @(
         TypeNamePlural : '{i18n>samples}',
         Title          : {Value : name}
     },
+    UI.Facets : [
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'General Information',
+            ID : 'fghfg',
+            Target : '@UI.FieldGroup#fghfg',
+        },
+    ],
+    UI.FieldGroup #fghfg : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : createdAt,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : createdBy,
+            },
+        ],
+    },
+    UI.FieldGroup #dfhgdfh : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+        ],
+    },
 ) {
     ID              @UI.Hidden : true;
     createdAt       @UI.HiddenFilter : false;

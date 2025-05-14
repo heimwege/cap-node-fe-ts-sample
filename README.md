@@ -4,6 +4,9 @@ This repo contains a draft enabled [CAP](https://cap.cloud.sap/docs/) (node) bas
 OData v4 service used by a TypeScript based [Fiori Elements](https://experience.sap.com/fiori-design-web/smart-templates/)
 frontend (List Report and Object Page with a custom section controller extension).
 
+The frontend was created using the SAP Fiori Tools for SAP Business Application Studio and
+[VSCode](https://marketplace.visualstudio.com/items?itemName=SAPSE.sap-ux-fiori-tools-extension-pack).
+
 # How to run the app?
 
 - checkout repo
