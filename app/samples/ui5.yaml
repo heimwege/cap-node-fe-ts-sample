@@ -37,7 +37,7 @@ server:
         ui5:
           paths:
             - path: /resources
-              url: https://sapui5untestedv2.int.sap.eu2.hana.ondemand.com/
+              url: https://ui5.sap.com/
             - path: /test-resources
-              url: https://sapui5untestedv2.int.sap.eu2.hana.ondemand.com/
-          version: 1.134.0
+              url: https://ui5.sap.com/
+          version: 1.136.1
