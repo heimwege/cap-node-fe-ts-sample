@@ -35,9 +35,9 @@ server:
       configuration:
         ignoreCertError: true # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         ui5:
-          paths:
-            - path: /resources
-              url: https://ui5.sap.com/
-            - path: /test-resources
-              url: https://ui5.sap.com/
-          version: 1.136.1
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+          # version: 1.136.2
+          version: 1.136.2-legacy-free
