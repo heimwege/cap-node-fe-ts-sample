@@ -14,7 +14,7 @@
         <beginButton>
             <Button id="closeDialog"
                     type="Emphasized"
-                    press="onCloseDialog"
+                    press=".onCloseDialog"
                     text="{i18n>ok}"/>
         </beginButton>
     </Dialog>
