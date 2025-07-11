@@ -22,6 +22,7 @@
     "build:cds": "cds build && npm --prefix app/samples run odata:types:generate",
     "ui:mockserver": "npm --prefix app/samples run ui:mockserver",
     "ui:cap": "npm --prefix app/samples run ui:cap",
+    "ui:mockserver:proxy:rta": "npm --prefix app/samples run ui:mockserver:proxy:rta",
     "ui:test": "npm --prefix app/samples run ui:test",
     "e2e:test": "npm --prefix app/samples run e2e:test"
   },

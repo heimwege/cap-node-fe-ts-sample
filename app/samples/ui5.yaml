@@ -20,6 +20,11 @@ server:
           intent:
             object: "Samples"
             action: "display"
+        editors:
+          rta:
+            layer: 'CUSTOMER_BASE'
+            endpoints:
+              - path: localService/variantsManagement.html
         debug: false
     - name: sap-fe-mockserver
       mountPath: /
