@@ -11,6 +11,7 @@
 _out
 *.db
 *.sqlite
+@cds-models
 connection.properties
 default-*.json
 .cdsrc-private.json
@@ -38,6 +39,3 @@ mta_archives/
 # IDEs
 .vscode
 .idea
-
-# @cap-js/cds-typer
-@cds-models
