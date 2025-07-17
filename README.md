@@ -12,6 +12,7 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
 - checkout repo
 - `npm run install`
 - `npm run ui:mockserver` (for standalone UI mock server)
+- `npm run ui:mockserver:proxy:rta` (for UI mock server with UI5 sources from CDN and RTA enabled)
 - `npm run start` (for integration of UI5 server into CDS server)
 - `npm run ui:cap` (for integration of CDS server into UI5 server)
 
@@ -52,6 +53,8 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
   - Check expiring End of Cloud Provisioning date ([ui5-task-check-eocp](https://www.npmjs.com/package/ui5-task-check-eocp))
   - Zipping project resources ([ui5-task-zipper](https://www.npmjs.com/package/ui5-task-zipper))
   - Transpile TypeScript sources to JavaScript during build ([ui5-tooling-transpile-task](https://www.npmjs.com/package/ui5-tooling-transpile))
+- Runtime adaptation
+  - The virtual endpoint of the preview middleware for RTA can be used to create `.changes` files that will be bundled to `flexibility-bundle.json` by the UI5 builder (standard task [generateFlexChangesBundle](https://sap.github.io/ui5-tooling/stable/api/module-@ui5_builder_tasks_bundlers_generateFlexChangesBundle.html)). If deployed with the application, the changes contained in the bundle are applied at runtime. 
 
 # What does the repo not contain?
 
