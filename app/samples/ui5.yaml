@@ -22,7 +22,6 @@ server:
             action: "display"
         editors:
           rta:
-            layer: 'CUSTOMER_BASE'
             endpoints:
               - path: localService/variantsManagement.html
         debug: false
