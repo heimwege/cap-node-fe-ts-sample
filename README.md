@@ -12,7 +12,8 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
 - checkout repo
 - `npm run install`
 - `npm run ui:mockserver` (for standalone UI mock server)
-- `npm run ui:mockserver:proxy:rta` (for UI mock server with UI5 sources from CDN and RTA enabled)
+- `npm run ui:mockserver:proxy` (for UI mock server with UI5 sources from CDN)
+- `npm run ui:mockserver:proxy:rta` (for UI mock server with UI5 sources from CDN and runtime adaptation enabled)
 - `npm run start` (for integration of UI5 server into CDS server)
 - `npm run ui:cap` (for integration of CDS server into UI5 server)
 
@@ -47,6 +48,7 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
 - UI5 server middlewares
   - Transpile TypeScript sources to JavaScript on browser request ([ui5-tooling-transpile](https://www.npmjs.com/package/ui5-tooling-transpile))
   - OData v4 Mockserver to run the UI standalone ([@sap-ux/ui5-middleware-fe-mockserver](https://www.npmjs.com/package/@sap-ux/ui5-middleware-fe-mockserver))
+    - [Custom mockserver enhancement](./app/samples/webapp/localService/mockdata/Comments.ts) to mock backend implementation
   - Virtual endpoints for Sandbox Launchpad to run the UI and tests ([@sap-ux/preview-middleware](https://www.npmjs.com/package/@sap-ux/preview-middleware))
   - Integration of CDS server into UI5 server ([ui5-middleware-cap](https://www.npmjs.com/package/ui5-middleware-cap))
 - UI5 builder tasks
