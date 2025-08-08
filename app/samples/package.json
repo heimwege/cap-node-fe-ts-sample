@@ -8,6 +8,7 @@
   "scripts": {
     "ui:mockserver": "npm run build:ts:mockserver && ui5 serve -o localService/index.html#Samples-display --config ./ui5-local.yaml",
     "ui:mockserver:teststarter": "npm run build:ts:mockserver && ui5 serve -o test/testsuite.qunit.html",
+    "ui:mockserver:teststarter:local": "npm run build:ts:mockserver && ui5 serve -o test/testsuite.qunit.html --config ./ui5-local.yaml",
     "ui:mockserver:proxy": "npm run build:ts:mockserver && ui5 serve -o localService/index.html#Samples-display",
     "ui:mockserver:proxy:rta": "npm run build:ts:mockserver && ui5 serve -o localService/variantsManagement.html#Samples-display",
     "ui:cap": "npm run build:ts:mockserver && ui5 serve -o localService/index.html#Samples-display --config ./ui5-with-cap.yaml",

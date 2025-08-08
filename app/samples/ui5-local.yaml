@@ -36,10 +36,10 @@ server:
           intent:
             object: "Samples"
             action: "display"
-        test:
-          - framework: "Testsuite"
-          - framework: "OPA5"
-          - framework: "Qunit"
+        #test:
+        #  - framework: "Testsuite"
+        #  - framework: "OPA5"
+        #  - framework: "Qunit"
         debug: false
     - name: sap-fe-mockserver
       mountPath: /
