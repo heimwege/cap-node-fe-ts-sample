@@ -2,135 +2,79 @@ import CommentsSectionController from "com/sap/cap/fe/ts/sample/ext/controller/C
 import * as Sinon from "sinon";
 import ResourceModel from "sap/ui/model/resource/ResourceModel";
 import type ResourceBundle from "sap/base/i18n/ResourceBundle";
-import type Event from "sap/ui/base/Event";
-import type ExtensionAPI from "sap/fe/core/ExtensionAPI";
+import Event from "sap/ui/base/Event";
+import ExtensionAPI from "sap/fe/core/ExtensionAPI";
 import { Message } from "com/sap/cap/fe/ts/sample/ext/utils/Constants";
 import MessageBox from "sap/m/MessageBox";
+import FeedListItem from "sap/m/FeedListItem";
+import v4Context from "sap/ui/model/odata/v4/Context";
 
-type CommentsControllerStub = Pick<typeof CommentsSectionController["prototype"], "getExtensionAPI" | "getResourceBundle" | "onEditComment" | "onDeleteComment" | "onPostComment" | "_createEditCommentDialog"> & {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    overrides: Record<string, Record<string, (...args: any) => any>>
-};
-
-let controllerStub: CommentsControllerStub;
-let setPropertyCalled = false;
-let eventStub: Event;
+//@ts-expect-error: this is an instantiation of a controller for testing purposes
+const commentsSectionController = new CommentsSectionController() as CommentsSectionController;
+const sandbox = Sinon.createSandbox();
+const resourceBundle = new ResourceModel({
+    bundleUrl: sap.ui.require.toUrl("com/sap/cap/fe/ts/sample") + "/i18n/i18n.properties"
+}).getResourceBundle() as ResourceBundle
+let fakeFeedListItem = new FeedListItem();
+let fakeEvent = new Event("test", fakeFeedListItem, {}) as Event;
 
 QUnit.module("Unit test for Task Management UI (Comments Section)", {
-    before: () => {
-        eventStub = {
-            getParameter: () => {
-                // only called for parameter 'value'
-                return "Test";
-            },
-            getSource: () => {
-                return {
-                    getBindingContext: () => {
-                        return {
-                            getProperty: () => {
-                                return "Draft";
-                            },
-                            setProperty: () => {
-                                setPropertyCalled = true;
-                            }
-                        };
-                    }
-                };
-            }
-        } as unknown as Event;
-
-        const resourceBundle = new ResourceModel({ bundleUrl: sap.ui.require.toUrl("com/sap/cap/fe/ts/sample") + "/i18n/i18n.properties" }).getResourceBundle() as ResourceBundle;
-
-        //@ts-expect-error: this is an instantiation of a controller stub for testing purposes
-        const commentsSectionControllerStub = new CommentsSectionController() as CommentsSectionController;
-
-        controllerStub = {
-            getExtensionAPI: function () {
-                return {
-                    getEditFlow: () => {
-                        return {
-                            securedExecution: () => {
-                                return new Promise(() => {
-                                    throw new Error("Test error");
-                                });
-                            }
-                        };
-                    }
-                } as unknown as ExtensionAPI;
-            },
-            getResourceBundle: function () {
-                return resourceBundle;
-            },
-            onEditComment: function (event: Event) {
-                commentsSectionControllerStub.onEditComment.call(this, event);
-            },
-            onDeleteComment: function (event: Event) {
-                return commentsSectionControllerStub.onDeleteComment.call(this, event);
-            },
-            onPostComment: function (event: Event) {
-                return commentsSectionControllerStub.onPostComment.call(this, event);
-            },
-            _createEditCommentDialog: function () {
-                return Promise.resolve();
-            },
-            overrides: {
-                editFlow: {
-                    onBeforeSave: function () {
-                        // @ts-expect-error getOverrides() unknown; will reflect 'overrides' of respective controller
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
-                        commentsSectionControllerStub.getMetadata().getOverrides().editFlow.onBeforeSave.call(controllerStub);
-                    }
-                }
-            }
-        };
-    },
     beforeEach: () => {
-        // nothing
+        sandbox.stub(commentsSectionController, "getResourceBundle").returns(resourceBundle);
+        sandbox.stub(fakeEvent, "getParameter").resolves();
+        sandbox.stub(fakeEvent, "getSource").returns(fakeFeedListItem);
     },
     afterEach: () => {
-        // nothing
-    },
-    after: () => {
-        // nothing
+        sandbox.restore();
     }
-} as Hooks, undefined);
+} satisfies Hooks);
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-QUnit.test("test onBeforeSave hook opens a message box of type success", async assert => {
-    const messageBoxStub = Sinon.stub(MessageBox, "success");
+QUnit.test("Check that onBeforeSave callback opens a MessageBox of type success", async assert => {
+    const messageBoxSuccessStub = sandbox.stub(MessageBox, "success");
 
-    await controllerStub.overrides.editFlow.onBeforeSave();
+    // @ts-expect-error getOverrides() unknown; will reflect 'overrides' of respective controller
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
+    await commentsSectionController.getMetadata().getOverrides().editFlow.onBeforeSave.call(commentsSectionController);
 
-    const expectedText = controllerStub.getResourceBundle().getText("CallbackSuccess");
-    const actualText = messageBoxStub.getCall(0).args[0];
+    const expectedText = commentsSectionController.getResourceBundle().getText("CallbackSuccess");
+    const actualText = messageBoxSuccessStub.getCall(0).args[0];
 
     assert.strictEqual(actualText, expectedText);
-
-    messageBoxStub.restore();
 });
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-QUnit.test("Check that errors are displayed", async assert => {
-    const utilsStub = Sinon.stub(MessageBox, "error");
+QUnit.test("Check that errors are being displayed when securedExecution fails", async assert => {
+    const messageBoxErrorStub = sandbox.stub(MessageBox, "error");
+    sandbox.stub(commentsSectionController, "getExtensionAPI").returns({
+        getEditFlow: () => {
+            return {
+                securedExecution: _fnFunction => Promise.reject(new Error("Test error"))
+            };
+        }
+    } as ExtensionAPI);
 
-    await controllerStub.onDeleteComment(eventStub);
+    await commentsSectionController.onDeleteComment(fakeEvent);
 
-    const expectedText = controllerStub.getResourceBundle().getText(Message.error.GENERIC);
-    let actualText = utilsStub.getCall(0).args[0];
-
+    const expectedText = commentsSectionController.getResourceBundle().getText(Message.error.GENERIC);
+    let actualText = messageBoxErrorStub.getCall(0).args[0];
     assert.strictEqual(actualText, expectedText, "Error when deleting comment is displayed");
 
-    await controllerStub.onPostComment(eventStub);
+    await commentsSectionController.onPostComment(fakeEvent);
 
-    actualText = utilsStub.getCall(1).args[0];
-
+    actualText = messageBoxErrorStub.getCall(1).args[0];
     assert.strictEqual(actualText, expectedText, "Error when posting comment is displayed");
-
-    utilsStub.restore();
 });
 
-QUnit.test("Check that 'type' property of comment not changed when already 'Draft'", assert => {
-    controllerStub.onEditComment(eventStub);
+QUnit.test("Check that 'type' property of comment is not being changed in case of edit when already 'Draft'", assert => {
+    //@ts-expect-error: this is an instantiation of a context for testing purposes
+    const fakeBindingContext = new Context() as v4Context;
+    sandbox.stub(fakeFeedListItem, "getBindingContext").returns(fakeBindingContext);
+    sandbox.stub(fakeBindingContext, "getProperty").returns(commentsSectionController.getResourceBundle().getText("draft"));
+    const setPropertyStub = sandbox.stub(fakeBindingContext, "setProperty").resolves();
+    sandbox.stub(commentsSectionController, "_createEditCommentDialog").resolves();
 
-    assert.strictEqual(setPropertyCalled, false);
+    commentsSectionController.onEditComment(fakeEvent);
+
+    assert.strictEqual(setPropertyStub.getCalls().length, 0);
 });

@@ -36,7 +36,7 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
 # What does the repo contain?
 
 - Generate TypeScript types based on the service metadata document ([odata2ts](https://www.npmjs.com/package/@odata2ts/odata2ts))
-- Unit tests ([QUnit](https://qunitjs.com/))
+- Unit tests ([QUnit](https://qunitjs.com/)) including up-to-date [Sinon](https://www.npmjs.com/package/sinon) version for mocking (integrated with [ui5-tooling-modules](https://www.npmjs.com/package/ui5-tooling-modules))
 - Integration tests ([OPA5](https://sapui5.hana.ondemand.com/#/api/sap.ui.test.Opa5), [sap.fe.test](https://sapui5.hana.ondemand.com/sdk/#/api/sap.fe.test))
 - Test runner for Unit- and Integration tests including code coverage and test coverage reporting ([ui5-test-runner](https://www.npmjs.com/package/ui5-test-runner))
 - End-to-End tests ([WDI5](https://github.com/ui5-community/wdi5), [wdio-timeline-reporter](https://www.npmjs.com/package/wdio-timeline-reporter), [sap.fe.test](https://sapui5.hana.ondemand.com/sdk/#/api/sap.fe.test))
