@@ -112,7 +112,7 @@
                   "useSemanticDateRange": true
                 }
               },
-              "initialLoad": true,
+              "initialLoad": "Enabled",
               "variantManagement": "Page",
               "navigation": {
                 "Samples": {
@@ -136,7 +136,7 @@
               "content": {
                 "body": {
                   "sections": {
-                    "CommentsSection" : {
+                    "CommentsSection": {
                       "template": "com.sap.cap.fe.ts.sample.ext.view.fragment.CommentsSection",
                       "title": "{i18n>comments}"
                     }
