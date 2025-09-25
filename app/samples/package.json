@@ -39,7 +39,7 @@
     "@odata2ts/odata2ts": "0.39.1",
     "@sap-ux/eslint-plugin-fiori-tools": "0.6.0",
     "@sap-ux/preview-middleware": "0.23.14",
-    "@sap-ux/ui5-middleware-fe-mockserver": "2.3.0",
+    "@sap-ux/ui5-middleware-fe-mockserver": "2.3.2",
     "@sap/ux-ui5-tooling": "1.18.7",
     "ui5-middleware-cap": "3.3.2",
     "cap-fe-ts-sample-node": "file:../..",
