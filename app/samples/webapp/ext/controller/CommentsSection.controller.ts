@@ -13,6 +13,7 @@ import type ResourceBundle from "sap/base/i18n/ResourceBundle";
 import MessageBox from "sap/m/MessageBox";
 import type { EditableComments } from "com/sap/cap/fe/ts/sample/ext/types/gen/CapFeTsSampleServiceModel";
 import { FioriElementsControllerExtensionOverrides } from "com/sap/cap/fe/ts/sample/ext/types/FioriElements";
+import ExtensionAPI from "sap/fe/core/ExtensionAPI";
 
 /**
  * @namespace com.sap.cap.fe.ts.sample.ext.controller
@@ -20,7 +21,6 @@ import { FioriElementsControllerExtensionOverrides } from "com/sap/cap/fe/ts/sam
 export default class CommentsSection extends ControllerExtension {
     /**
      * Workaround for missing the correct controller extension type
-     * @protected
      */
     protected base!: PageController;
 
@@ -38,18 +38,18 @@ export default class CommentsSection extends ControllerExtension {
 
     /**
      * Get the fiori elements extension API
-     * @return {ExtensionAPI} the extension API
+     * @return the extension API
      */
-    getExtensionAPI () {
+    getExtensionAPI (): ExtensionAPI {
         return this.base.getExtensionAPI();
     }
 
     /**
      * Callback function for comments to be created
-     * @param {Event} event the source
-     * @return {Promise} A promise that is resolved once the post has been done
+     * @param event the source
+     * @return A promise that is resolved once the post has been done
      */
-    onPostComment (event: FeedInput$PostEvent) {
+    async onPostComment (event: FeedInput$PostEvent): Promise<void> {
         const newComment = event.getParameter("value");
 
         const functionToBeExecuted = () => {
@@ -58,47 +58,46 @@ export default class CommentsSection extends ControllerExtension {
                 type: this.getResourceBundle().getText("draft") as string
             } satisfies EditableComments);
         };
-
-        return this.getExtensionAPI().getEditFlow().securedExecution(functionToBeExecuted)
-            .catch(() => {
-                MessageBox.error(this.getResourceBundle().getText(Message.error.GENERIC) as string);
-            });
+        try {
+            return await this.getExtensionAPI().getEditFlow().securedExecution(functionToBeExecuted);
+        } catch {
+            MessageBox.error(this.getResourceBundle().getText(Message.error.GENERIC) as string);
+        }
     }
 
     /**
      * Get list containing the comments
-     * @return {List|undefined} The list
+     * @return The list
      */
-    getCommentsList () {
+    getCommentsList (): List | undefined {
         return this.getView().byId(Ui.commentsList.ID) as List | undefined;
     }
 
     /**
      * Get the resource bundle
-     * @return {ResourceBundle} the resource bundle
+     * @return the resource bundle
      */
-    getResourceBundle () {
+    getResourceBundle (): ResourceBundle {
         return (this.getView().getModel(Model.i18n.NAME) as ResourceModel).getResourceBundle() as ResourceBundle;
     }
 
     /**
      * Change the selected comment
-     * @param {Event} event the source
+     * @param event the source
      */
-    onEditComment (event: FeedListItemAction$PressEvent) {
+    async onEditComment (event: FeedListItemAction$PressEvent): Promise<void> {
         const bindingContext = event.getSource().getBindingContext() as v4Context;
         if (bindingContext.getProperty("type") !== this.getResourceBundle().getText("draft")) {
             void bindingContext.setProperty("type", this.getResourceBundle().getText("edited"));
         }
-        void this._createEditCommentDialog(bindingContext);
+        await this.createEditCommentDialog(bindingContext);
     }
 
     /**
      * Creates a dialog to edit comments
-     * @param {v4Context} bindingContext the binding context to be inherited to the dialog
-     * @private
+     * @param bindingContext the binding context to be inherited to the dialog
      */
-    async _createEditCommentDialog (bindingContext: v4Context) {
+    private async createEditCommentDialog (bindingContext: v4Context): Promise<void> {
         const dialog = await this.getExtensionAPI().loadFragment({
             id: Ui.fragment.editCommentDialog.ID,
             name: Ui.fragment.editCommentDialog.NAME,
@@ -112,24 +111,24 @@ export default class CommentsSection extends ControllerExtension {
     /**
      * Handles the dialog close button
      */
-    onCloseDialog () {
+    onCloseDialog (): void {
         Fragment.byId(Ui.fragment.editCommentDialog.ID, Ui.fragment.editCommentDialog.EDIT_COMMENT_DIALOG)?.destroy();
     }
 
     /**
      * Delete the selected comment
-     * @param {Event} event the source
-     * @return {Promise} A promise that is resolved once the deletion has been done
+     * @param event the source
+     * @return A promise that is resolved once the deletion has been done
      */
-    onDeleteComment (event: FeedListItemAction$PressEvent) {
+    async onDeleteComment (event: FeedListItemAction$PressEvent): Promise<void> {
         const source = event.getSource();
         const functionToBeExecuted = () => {
             return (source.getBindingContext() as v4Context).delete();
         };
-
-        return this.getExtensionAPI().getEditFlow().securedExecution(functionToBeExecuted)
-            .catch(() => {
-                MessageBox.error(this.getResourceBundle().getText(Message.error.GENERIC) as string);
-            });
+        try {
+            return await this.getExtensionAPI().getEditFlow().securedExecution(functionToBeExecuted);
+        } catch {
+            MessageBox.error(this.getResourceBundle().getText(Message.error.GENERIC) as string);
+        }
     }
 }
