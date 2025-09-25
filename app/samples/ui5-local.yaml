@@ -45,7 +45,6 @@ server:
       mountPath: /
       beforeMiddleware: csp
       configuration:
-        tsConfigPath: ./tsconfig.json
         debug: false
         services:
           - urlPath: '/odata/v4/CapFeTsSampleService'
