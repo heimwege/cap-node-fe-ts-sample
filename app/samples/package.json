@@ -59,7 +59,7 @@
     "eslint-formatter-multiple": "2.0.0",
     "nyc": "17.1.0",
     "prettier": "3.6.2",
-    "puppeteer": "24.22.3",
+    "puppeteer": "24.22.2",
     "selenium-webdriver": "4.35.0",
     "start-server-and-test": "2.1.2",
     "typescript": "5.9.2",
