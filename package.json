@@ -21,7 +21,7 @@
     "ts-node": "10.9.2"
   },
   "scripts": {
-    "start": "cds watch --open com.sap.cap.fe.ts.sample/localService/index.html#Samples-display",
+    "start": "cds watch --open com.sap.cap.fe.ts.sample/localService/index.html#Samples-display --livereload false",
     "build:cds": "cds build && npm --prefix app/samples run odata:types:generate",
     "ui:mockserver": "npm --prefix app/samples run ui:mockserver",
     "ui:cap": "npm --prefix app/samples run ui:cap",
