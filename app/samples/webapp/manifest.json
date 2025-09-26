@@ -34,7 +34,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "odata/v4/CapFeTsSampleService/",
+        "uri": "/odata/v4/CapFeTsSampleService/",
         "type": "OData",
         "settings": {
           "localUri": "localService/metadata.xml",

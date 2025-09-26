@@ -40,7 +40,7 @@
     "cds-plugin-ui5": {
       "modules": {
         "samples": {
-          "configFile": "ui5-local.yaml"
+          "configFile": "cap-with-ui5.yaml"
         }
       }
     }
