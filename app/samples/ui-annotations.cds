@@ -47,11 +47,11 @@ annotate CapFeTsSampleService.Samples with @(
         {
             $Type : 'UI.ReferenceFacet',
             Label : 'General Information',
-            ID : 'fghfg',
-            Target : '@UI.FieldGroup#fghfg',
+            ID : 'generalInformation',
+            Target : '@UI.FieldGroup#generalInformation',
         },
     ],
-    UI.FieldGroup #fghfg : {
+    UI.FieldGroup #generalInformation : {
         $Type : 'UI.FieldGroupType',
         Data : [
             {
@@ -62,11 +62,6 @@ annotate CapFeTsSampleService.Samples with @(
                 $Type : 'UI.DataField',
                 Value : createdBy,
             },
-        ],
-    },
-    UI.FieldGroup #dfhgdfh : {
-        $Type : 'UI.FieldGroupType',
-        Data : [
         ],
     },
 ) {

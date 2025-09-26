@@ -12,13 +12,16 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "2.0.2",
-    "@sap/cds-dk": "9.1.0",
-    "@sap/eslint-plugin-cds": "4.0.2",
-    "cds-plugin-ui5": "0.13.1",
-    "eslint": "9.7.0"
+    "@sap/cds-dk": "9.3.2",
+    "@sap/eslint-plugin-cds": "4.1.0",
+    "cds-plugin-ui5": "0.13.6",
+    "eslint": "9.36.0",
+    "tsx": "4.20.5",
+    "typescript": "5.9.2",
+    "ts-node": "10.9.2"
   },
   "scripts": {
-    "start": "cds-serve",
+    "start": "cds watch --open com.sap.cap.fe.ts.sample/localService/index.html#Samples-display --livereload false",
     "build:cds": "cds build && npm --prefix app/samples run odata:types:generate",
     "ui:mockserver": "npm --prefix app/samples run ui:mockserver",
     "ui:cap": "npm --prefix app/samples run ui:cap",
@@ -42,5 +45,4 @@
       }
     }
   }
-
 }

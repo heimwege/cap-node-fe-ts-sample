@@ -151,12 +151,12 @@
           <Collection>
             <Record Type="UI.ReferenceFacet">
               <PropertyValue Property="Label" String="General Information"/>
-              <PropertyValue Property="ID" String="fghfg"/>
-              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fghfg"/>
+              <PropertyValue Property="ID" String="generalInformation"/>
+              <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#generalInformation"/>
             </Record>
           </Collection>
         </Annotation>
-        <Annotation Term="UI.FieldGroup" Qualifier="fghfg">
+        <Annotation Term="UI.FieldGroup" Qualifier="generalInformation">
           <Record Type="UI.FieldGroupType">
             <PropertyValue Property="Data">
               <Collection>
@@ -167,13 +167,6 @@
                   <PropertyValue Property="Value" Path="createdBy"/>
                 </Record>
               </Collection>
-            </PropertyValue>
-          </Record>
-        </Annotation>
-        <Annotation Term="UI.FieldGroup" Qualifier="dfhgdfh">
-          <Record Type="UI.FieldGroupType">
-            <PropertyValue Property="Data">
-              <Collection/>
             </PropertyValue>
           </Record>
         </Annotation>

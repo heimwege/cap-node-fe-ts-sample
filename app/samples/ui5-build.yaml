@@ -5,7 +5,7 @@ metadata:
 type: application
 framework:
   name: SAPUI5
-  version: 1.132.0
+  version: 1.132.8
 builder:
   resources:
     excludes:
