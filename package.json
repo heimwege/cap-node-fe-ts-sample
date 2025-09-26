@@ -11,6 +11,7 @@
     "express": "^4"
   },
   "devDependencies": {
+    "@cap-js/cds-types": "0.15.0",
     "@cap-js/sqlite": "2.0.2",
     "@sap/cds-dk": "9.3.2",
     "@sap/eslint-plugin-cds": "4.1.0",
