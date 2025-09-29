@@ -21,7 +21,7 @@
                     }
               }">
             <FeedListItem sender="{createdBy}"
-                          senderActive="true"
+                          senderActive="false"
                           icon="sap-icon://employee"
                           iconDisplayShape="Square"
                           iconActive="false"
