@@ -46,6 +46,7 @@ server:
       beforeMiddleware: csp
       configuration:
         debug: false
+        #watch: true
         services:
           - urlPath: '/odata/v4/CapFeTsSampleService'
             metadataPath: './webapp/localService/metadata.xml'
