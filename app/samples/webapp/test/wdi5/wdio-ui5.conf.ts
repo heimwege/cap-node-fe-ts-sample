@@ -1,7 +1,5 @@
 import type { wdi5Config } from "wdio-ui5-service";
 import * as path from "path";
-// @ts-expect-error no declaration file for TimelineService
-import { TimelineService } from "wdio-timeline-reporter/timeline-service";
 
 function getBrowserArgs () {
     if (process.argv.includes("--ci")) {
@@ -32,7 +30,6 @@ export const config: wdi5Config = {
     maxInstances: 2,
     capabilities: [
         {
-            maxInstances: 2,
             browserName: "chrome",
             "goog:chromeOptions": {
                 args: getBrowserArgs()
@@ -46,8 +43,7 @@ export const config: wdi5Config = {
     waitforTimeout: 30000,
     connectionRetryTimeout: getTimeout(),
     connectionRetryCount: 3,
-    // @ts-expect-error no types for TimelineService existing
-    services: ["ui5", [TimelineService]],
+    services: ["ui5"],
     reporters: [
         "spec",
         ["junit", {
@@ -56,12 +52,6 @@ export const config: wdi5Config = {
                 return `junit-${options.cid}.xml`;
             },
             packageName: "wdi5"
-        }],
-        ["timeline", {
-            outputDir: "./target/WDI5report/",
-            fileName: "report.html",
-            embedImages: true,
-            screenshotStrategy: "before:click"
         }]
     ],
     framework: "mocha",
