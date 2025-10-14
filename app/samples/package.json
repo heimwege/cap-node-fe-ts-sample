@@ -68,7 +68,8 @@
     "ui5-test-runner": "5.9.1",
     "ui5-task-check-eocp": "0.0.7",
     "ui5-tooling-transpile": "3.9.2",
-    "wdio-ui5-service": "3.0.0"
+    "wdio-ui5-service": "3.0.0",
+    "wdio-json-html-reporter": "1.5.14"
   },
   "eslint-formatter-multiple": {
     "formatters": [

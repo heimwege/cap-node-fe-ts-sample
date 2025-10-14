@@ -1,4 +1,6 @@
 import type { wdi5Config } from "wdio-ui5-service";
+// @ts-expect-error: JSONReporter is not typed
+import { JSONReporter, HTMLReportGenerator } from 'wdio-json-html-reporter';
 import * as path from "path";
 
 function getBrowserArgs () {
@@ -53,7 +55,8 @@ export const config: wdi5Config = {
                 return `junit-${options.cid}.xml`;
             },
             packageName: "wdi5"
-        }]
+        }],
+        [JSONReporter, { outputFile: './target/WDI5report/test-results.json', screenshotOption: 'OnFailure' }],  // Options: "No", "OnFailure", "Full"
     ],
     framework: "mocha",
     mochaOpts: {
@@ -197,8 +200,19 @@ export const config: wdi5Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // }
+    onComplete: async function(exitCode, config, capabilities, results) {
+        const outputFilePath = './target/WDI5report/test-report.html';
+        const jsonFolder = './target/WDI5report/'; // Directory where JSON reports are saved
+
+        // If you want to include historical data, specify the history JSON file path here.
+        const historyFile = './target/WDI5report/history.json'; // Optional
+
+        // Optionally, generate aggregated history data before generating the HTML report.
+        // JSONReporter.generateAggregateHistory({ reportPaths: jsonFolder, historyPath: historyFile });
+
+        const reportGenerator = new HTMLReportGenerator(outputFilePath, historyFile);
+        await reportGenerator.convertJSONFolderToHTML(jsonFolder);
+    }
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session
