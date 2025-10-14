@@ -27,9 +27,10 @@ export const config: wdi5Config = {
     },
     baseUrl: "http://localhost:8080/localService/index.html",
     specs: ["./scenarios/*.test.ts"],
-    maxInstances: 2,
+    maxInstances: 1,
     capabilities: [
         {
+            // 'wdio:enforceWebDriverClassic': true,
             browserName: "chrome",
             "goog:chromeOptions": {
                 args: getBrowserArgs()

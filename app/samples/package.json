@@ -20,7 +20,7 @@
     "lint": "npm run eslint && npm run ui5lint",
     "ui5lint": "npx --yes @ui5/linter@latest --fix",
     "odata:types:generate": "odata2ts",
-    "ui:test:server": "ui5 serve --config ./ui5-local.yaml",
+    "ui:test:server": "ui5 serve --config ./ui5.yaml",
     "ui:test:runner": "ui5-test-runner --port 8081 --url http://localhost:8080/test/testsuite.qunit.html --report-generator $/report.js $/junit-xml-report.js --report-dir ./target/QunitReport --coverage true --fail-opa-fast --split-opa --coverage-settings ./.nycrc.json",
     "ui:test": "start-server-and-test ui:test:server http://localhost:8080/ ui:test:runner",
     "wdio:run": "wdio run webapp/test/wdi5/wdio-ui5.conf.ts",
