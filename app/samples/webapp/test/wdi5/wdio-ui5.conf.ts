@@ -1,7 +1,7 @@
 import type { wdi5Config } from "wdio-ui5-service";
 // @ts-expect-error: JSONReporter is not typed
 import { JSONReporter, HTMLReportGenerator } from 'wdio-json-html-reporter';
-import * as path from "path";
+import { join } from "node:path";
 
 function getBrowserArgs () {
     if (process.argv.includes("--ci")) {
@@ -22,7 +22,7 @@ function getTimeout () {
 
 export const config: wdi5Config = {
     wdi5: {
-        screenshotPath: path.join("./target/report/"),
+        screenshotPath: join("./target/report/", "__screenshots__"),
         screenshotsDisabled: false,
         logLevel: "error", // error | verbose | silent
         waitForUI5Timeout: 30000
