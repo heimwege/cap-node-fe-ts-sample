@@ -5,6 +5,7 @@ import AppComponent from "sap/fe/core/AppComponent";
  */
 export default class Component extends AppComponent {
     public static readonly metadata = {
+        interfaces: ["sap.ui.core.IAsyncContentCreation"],
         manifest: "json"
     };
 }
