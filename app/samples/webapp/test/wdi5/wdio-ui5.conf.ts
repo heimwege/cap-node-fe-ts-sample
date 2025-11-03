@@ -22,12 +22,13 @@ function getTimeout () {
 
 export const config: wdi5Config = {
     wdi5: {
-        screenshotPath: join("./target/report/", "__screenshots__"),
+        screenshotPath: join("./target/WDI5report/", "screenshots"),
         screenshotsDisabled: false,
         logLevel: "error", // error | verbose | silent
         waitForUI5Timeout: 30000
     },
-    baseUrl: "http://localhost:8080/localService/index.html",
+    //baseUrl must provide the 'sap-ui-xx-viewCache' URL parameter to avoid redirect from preview middleware
+    baseUrl: "http://localhost:8080/localService/index.html?sap-ui-xx-viewCache=true",
     specs: ["./scenarios/*.test.ts"],
     maxInstances: 1,
     capabilities: [
@@ -56,7 +57,7 @@ export const config: wdi5Config = {
             },
             packageName: "wdi5"
         }],
-        [JSONReporter, { outputFile: './target/WDI5report/test-results.json', screenshotOption: 'OnFailure' }],  // Options: "No", "OnFailure", "Full"
+        [JSONReporter, { outputFile: './target/WDI5report/test-results.json', screenshotOption: 'Full' }],  // Options: "No", "OnFailure", "Full"
     ],
     framework: "mocha",
     mochaOpts: {
