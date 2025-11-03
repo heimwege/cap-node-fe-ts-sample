@@ -30,10 +30,9 @@ export const config: wdi5Config = {
     //baseUrl must provide the 'sap-ui-xx-viewCache' URL parameter to avoid redirect from preview middleware
     baseUrl: "http://localhost:8080/localService/index.html?sap-ui-xx-viewCache=true",
     specs: ["./scenarios/*.test.ts"],
-    maxInstances: 1,
+    maxInstances: 2,
     capabilities: [
         {
-            // 'wdio:enforceWebDriverClassic': true,
             browserName: "chrome",
             "goog:chromeOptions": {
                 args: getBrowserArgs()
