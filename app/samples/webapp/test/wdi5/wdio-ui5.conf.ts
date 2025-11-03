@@ -1,7 +1,7 @@
 import type { wdi5Config } from "wdio-ui5-service";
-import * as path from "path";
-// @ts-expect-error no declaration file for TimelineService
-import { TimelineService } from "wdio-timeline-reporter/timeline-service";
+// @ts-expect-error: JSONReporter is not typed
+import { JSONReporter, HTMLReportGenerator } from 'wdio-json-html-reporter';
+import { join } from "node:path";
 
 function getBrowserArgs () {
     if (process.argv.includes("--ci")) {
@@ -22,17 +22,17 @@ function getTimeout () {
 
 export const config: wdi5Config = {
     wdi5: {
-        screenshotPath: path.join("./target/report/"),
+        screenshotPath: join("./target/WDI5report/", "screenshots"),
         screenshotsDisabled: false,
         logLevel: "error", // error | verbose | silent
         waitForUI5Timeout: 30000
     },
-    baseUrl: "http://localhost:8080/localService/index.html",
+    //baseUrl must provide the 'sap-ui-xx-viewCache' URL parameter to avoid redirect from preview middleware
+    baseUrl: "http://localhost:8080/localService/index.html?sap-ui-xx-viewCache=true",
     specs: ["./scenarios/*.test.ts"],
     maxInstances: 2,
     capabilities: [
         {
-            maxInstances: 2,
             browserName: "chrome",
             "goog:chromeOptions": {
                 args: getBrowserArgs()
@@ -46,8 +46,7 @@ export const config: wdi5Config = {
     waitforTimeout: 30000,
     connectionRetryTimeout: getTimeout(),
     connectionRetryCount: 3,
-    // @ts-expect-error no types for TimelineService existing
-    services: ["ui5", [TimelineService]],
+    services: ["ui5"],
     reporters: [
         "spec",
         ["junit", {
@@ -57,12 +56,7 @@ export const config: wdi5Config = {
             },
             packageName: "wdi5"
         }],
-        ["timeline", {
-            outputDir: "./target/WDI5report/",
-            fileName: "report.html",
-            embedImages: true,
-            screenshotStrategy: "before:click"
-        }]
+        [JSONReporter, { outputFile: './target/WDI5report/test-results.json', screenshotOption: 'Full' }],  // Options: "No", "OnFailure", "Full"
     ],
     framework: "mocha",
     mochaOpts: {
@@ -206,8 +200,19 @@ export const config: wdi5Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // }
+    onComplete: async function(exitCode, config, capabilities, results) {
+        const outputFilePath = './target/WDI5report/test-report.html';
+        const jsonFolder = './target/WDI5report/'; // Directory where JSON reports are saved
+
+        // If you want to include historical data, specify the history JSON file path here.
+        const historyFile = './target/WDI5report/history.json'; // Optional
+
+        // Optionally, generate aggregated history data before generating the HTML report.
+        // JSONReporter.generateAggregateHistory({ reportPaths: jsonFolder, historyPath: historyFile });
+
+        const reportGenerator = new HTMLReportGenerator(outputFilePath, historyFile);
+        await reportGenerator.convertJSONFolderToHTML(jsonFolder);
+    }
     /**
      * Gets executed when a refresh happens.
      * @param {String} oldSessionId session ID of the old session

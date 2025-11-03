@@ -30,7 +30,8 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
 ### WDI5
 
 - `npm run e2e:test`
-- Test execution report can be found in `./app/samples/target/WDI5report/report.html`
+- Test execution report (html) can be found in `./app/samples/target/WDI5report/test-report.html`
+- Test execution report (json) can be found in `./app/samples/target/WDI5report/test-report-<execution date>.json`
 - Junit test result report can be found in `./app/samples/target/WDI5report/junit-0-(0|1).xml`
 
 # What does the repo contain?
@@ -39,7 +40,7 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
 - Unit tests ([QUnit](https://qunitjs.com/))
 - Integration tests ([OPA5](https://sapui5.hana.ondemand.com/#/api/sap.ui.test.Opa5), [sap.fe.test](https://sapui5.hana.ondemand.com/sdk/#/api/sap.fe.test))
 - Test runner for Unit- and Integration tests including code coverage and test coverage reporting ([ui5-test-runner](https://www.npmjs.com/package/ui5-test-runner))
-- End-to-End tests ([WDI5](https://github.com/ui5-community/wdi5), [wdio-timeline-reporter](https://www.npmjs.com/package/wdio-timeline-reporter), [sap.fe.test](https://sapui5.hana.ondemand.com/sdk/#/api/sap.fe.test))
+- End-to-End tests ([WDI5](https://github.com/ui5-community/wdi5), [wdio-json-html-reporter](https://www.npmjs.com/package/wdio-json-html-reporter), [sap.fe.test](https://sapui5.hana.ondemand.com/sdk/#/api/sap.fe.test))
 - Static code analysis
   - [eslint](https://www.npmjs.com/package/eslint) ([fiori-tools plugin](https://www.npmjs.com/package/@sap-ux/eslint-plugin-fiori-tools), [ecoCode plugin](https://github.com/green-code-initiative/ecoCode-javascript/tree/main/eslint-plugin), [eslint-formatter-multiple](https://www.npmjs.com/package/eslint-formatter-multiple))
   - [@ui5/linter](https://www.npmjs.com/package/@ui5/linter)
