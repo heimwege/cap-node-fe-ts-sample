@@ -6,9 +6,7 @@ module.exports = [
         ignores: [
             '/dist',
             '/node_modules',
-            '/target',
-            'webapp/localService/mockdata/*.js',
-            'webapp/localService/mockdata/*.js.map'
+            '/target'
         ],
         rules: {
             'linebreak-style': 0
