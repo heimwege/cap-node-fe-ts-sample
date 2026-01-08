@@ -200,6 +200,7 @@ export const config: wdi5Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onComplete: async function(exitCode, config, capabilities, results) {
         const outputFilePath = './target/WDI5report/test-report.html';
         const jsonFolder = './target/WDI5report/'; // Directory where JSON reports are saved
@@ -210,7 +211,9 @@ export const config: wdi5Config = {
         // Optionally, generate aggregated history data before generating the HTML report.
         // JSONReporter.generateAggregateHistory({ reportPaths: jsonFolder, historyPath: historyFile });
 
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call
         const reportGenerator = new HTMLReportGenerator(outputFilePath, historyFile);
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
         await reportGenerator.convertJSONFolderToHTML(jsonFolder);
     }
     /**

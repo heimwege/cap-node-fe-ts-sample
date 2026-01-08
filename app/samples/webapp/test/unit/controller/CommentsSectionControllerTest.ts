@@ -7,7 +7,7 @@ import type ExtensionAPI from "sap/fe/core/ExtensionAPI";
 import { Message } from "com/sap/cap/fe/ts/sample/ext/utils/Constants";
 import MessageBox from "sap/m/MessageBox";
 
-type CommentsControllerStub = Pick<typeof CommentsSectionController["prototype"], "getExtensionAPI" | "getResourceBundle" | "onEditComment" | "onDeleteComment" | "onPostComment" | "_createEditCommentDialog"> & {
+type CommentsControllerStub = Pick<typeof CommentsSectionController["prototype"], "getExtensionAPI" | "getResourceBundle" | "onEditComment" | "onDeleteComment" | "onPostComment" | "createEditCommentDialog"> & {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     overrides: Record<string, Record<string, (...args: any) => any>>
 };
@@ -62,7 +62,7 @@ QUnit.module("Unit test for Task Management UI (Comments Section)", {
                 return resourceBundle;
             },
             onEditComment: function (event: Event) {
-                commentsSectionControllerStub.onEditComment.call(this, event);
+                return commentsSectionControllerStub.onEditComment.call(this, event);
             },
             onDeleteComment: function (event: Event) {
                 return commentsSectionControllerStub.onDeleteComment.call(this, event);
@@ -70,7 +70,7 @@ QUnit.module("Unit test for Task Management UI (Comments Section)", {
             onPostComment: function (event: Event) {
                 return commentsSectionControllerStub.onPostComment.call(this, event);
             },
-            _createEditCommentDialog: function () {
+            createEditCommentDialog: function () {
                 return Promise.resolve();
             },
             overrides: {
@@ -102,7 +102,7 @@ QUnit.test("test onBeforeSave hook opens a message box of type success", async a
     await controllerStub.overrides.editFlow.onBeforeSave();
 
     const expectedText = controllerStub.getResourceBundle().getText("CallbackSuccess");
-    const actualText = messageBoxStub.getCall(0).args[0];
+    const actualText = messageBoxStub.getCall(0).args[0] as string;
 
     assert.strictEqual(actualText, expectedText);
 
@@ -116,21 +116,22 @@ QUnit.test("Check that errors are displayed", async assert => {
     await controllerStub.onDeleteComment(eventStub);
 
     const expectedText = controllerStub.getResourceBundle().getText(Message.error.GENERIC);
-    let actualText = utilsStub.getCall(0).args[0];
+    let actualText = utilsStub.getCall(0).args[0] as string;
 
     assert.strictEqual(actualText, expectedText, "Error when deleting comment is displayed");
 
     await controllerStub.onPostComment(eventStub);
 
-    actualText = utilsStub.getCall(1).args[0];
+    actualText = utilsStub.getCall(1).args[0] as string;
 
     assert.strictEqual(actualText, expectedText, "Error when posting comment is displayed");
 
     utilsStub.restore();
 });
 
-QUnit.test("Check that 'type' property of comment not changed when already 'Draft'", assert => {
-    controllerStub.onEditComment(eventStub);
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+QUnit.test("Check that 'type' property of comment not changed when already 'Draft'", async assert => {
+    await controllerStub.onEditComment(eventStub);
 
     assert.strictEqual(setPropertyCalled, false);
 });

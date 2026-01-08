@@ -3,7 +3,6 @@ import {wdi5Selector} from "wdio-ui5-service";
 
 // open: typed UI5 controls retrieved from the browser-scope (see https://github.com/ui5-community/wdi5/issues/509)
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 class ObjectPage {
     async iShouldSeeComments (numberOfEntries: number) {
         const commentsListSelector: wdi5Selector = {

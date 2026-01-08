@@ -3,6 +3,7 @@ import type { Comments } from "../../ext/types/gen/CapFeTsSampleServiceModel";
 import type ODataRequest from "@sap-ux/fe-mockserver-core/dist/request/odataRequest";
 import type { KeyDefinitions } from "@sap-ux/fe-mockserver-core/dist/request/odataRequest";
 
+// eslint-disable-next-line @sap-ux/fiori-tools/sap-no-global-variable
 const mockDataContributor: MockDataContributor<Comments> = {
     /**
      * @overwrite

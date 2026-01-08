@@ -1,3 +1,5 @@
+/* eslint-disable @sap-ux/fiori-tools/sap-no-global-variable */
+
 export const Model = {
     i18n: {
         NAME: "i18n"
