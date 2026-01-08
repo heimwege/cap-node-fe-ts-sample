@@ -7,8 +7,8 @@ module.exports = [
             '/dist',
             '/node_modules',
             '/target',
-            '/localService/mockdata/*.js',
-            '/localService/mockdata/*.js.map'
+            'webapp/localService/mockdata/*.js',
+            'webapp/localService/mockdata/*.js.map'
         ],
         rules: {
             'linebreak-style': 0
