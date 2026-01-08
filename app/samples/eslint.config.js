@@ -16,7 +16,7 @@ module.exports = [
     },
     ...fioriTools.configs.recommended,
     {
-        // 3. OVERRIDE: Re-include and fix parsing for localService TS files
+        // OVERRIDE: Re-include localService TS files
         files: ['webapp/localService/**/*.ts'],
         languageOptions: {
             parser: tsParser,
