@@ -29,6 +29,7 @@ export default class CommentsSection extends ControllerExtension {
      */
     static overrides: FioriElementsControllerExtensionOverrides = {
         editFlow: {
+            // eslint-disable-next-line no-unused-vars
             onBeforeSave: function (this: CommentsSection) {
                 MessageBox.success(this.getResourceBundle().getText("CallbackSuccess") as string);
                 return Promise.resolve();
@@ -97,7 +98,7 @@ export default class CommentsSection extends ControllerExtension {
      * Creates a dialog to edit comments
      * @param bindingContext the binding context to be inherited to the dialog
      */
-    private async createEditCommentDialog (bindingContext: v4Context): Promise<void> {
+    async createEditCommentDialog (bindingContext: v4Context): Promise<void> {
         const dialog = await this.getExtensionAPI().loadFragment({
             id: Ui.fragment.editCommentDialog.ID,
             name: Ui.fragment.editCommentDialog.NAME,
