@@ -17,6 +17,7 @@ function journey() {
     });
 
     opaTest("Should see the Object Page Sections", function (Given: Given, When: When, Then: Then) {
+        Then.onTheObjectPage.iShouldSeeSection("generalInformation");
         Then.onTheObjectPage.iShouldSeeSection("CommentsSection");
     });
 
@@ -24,6 +25,7 @@ function journey() {
         When.onTheObjectPage.onHeader().iExecuteEdit();
 
         Then.onTheObjectPage.iShouldSeeSection("EditableHeaderSection");
+        Then.onTheObjectPage.iShouldSeeSection("generalInformation");
         Then.onTheObjectPage.iShouldSeeSection("CommentsSection");
     });
 
