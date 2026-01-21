@@ -20,6 +20,10 @@ server:
           intent:
             object: "Samples"
             action: "display"
+        test:
+          - framework: "Testsuite"
+          - framework: "OPA5"
+          - framework: "Qunit"
         editors:
           rta:
             endpoints:
