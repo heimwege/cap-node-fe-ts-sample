@@ -1,0 +1,12 @@
+{
+  "start": "ui:test:server",
+  "start-timeout": 10000,
+  "port": 8081,
+  "url": "http://localhost:8080/test/testsuite.qunit.html",
+  "report-generator": ["$/report.js", "$/junit-xml-report.js"],
+  "report-dir": "./target/QunitReport",
+  "coverage": true,
+  "fail-opa-fast": true,
+  "split-opa": true,
+  "coverage-settings": "./.nycrc.json"
+}

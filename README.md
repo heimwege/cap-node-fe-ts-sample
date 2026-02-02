@@ -42,7 +42,7 @@ The frontend was created using the SAP Fiori Tools for SAP Business Application 
 - Test runner for Unit- and Integration tests including code coverage and test coverage reporting ([ui5-test-runner](https://www.npmjs.com/package/ui5-test-runner))
 - End-to-End tests ([WDI5](https://github.com/ui5-community/wdi5), [wdio-json-html-reporter](https://www.npmjs.com/package/wdio-json-html-reporter), [sap.fe.test](https://sapui5.hana.ondemand.com/sdk/#/api/sap.fe.test))
 - Static code analysis
-  - [eslint](https://www.npmjs.com/package/eslint) ([fiori-tools plugin](https://www.npmjs.com/package/@sap-ux/eslint-plugin-fiori-tools), [ecoCode plugin](https://github.com/green-code-initiative/ecoCode-javascript/tree/main/eslint-plugin), [eslint-formatter-multiple](https://www.npmjs.com/package/eslint-formatter-multiple))
+  - [eslint](https://www.npmjs.com/package/eslint) ([fiori-tools plugin](https://www.npmjs.com/package/@sap-ux/eslint-plugin-fiori-tools), [eslint-formatter-multiple](https://www.npmjs.com/package/eslint-formatter-multiple))
   - [@ui5/linter](https://www.npmjs.com/package/@ui5/linter)
 - CDS server plugins
   - Integration of UI5 server into CDS server ([cds-plugin-ui5](https://www.npmjs.com/package/cds-plugin-ui5))
