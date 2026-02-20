@@ -1,4 +1,3 @@
-import ControllerExtension from 'sap/ui/core/mvc/ControllerExtension';
 import Fragment from 'sap/ui/core/Fragment';
 import type v4Context from 'sap/ui/model/odata/v4/Context';
 import type List from 'sap/m/List';
@@ -8,26 +7,21 @@ import type { FeedListItemAction$PressEvent } from 'sap/m/FeedListItemAction';
 import type Dialog from 'sap/m/Dialog';
 import { Message, Model, Ui } from 'com/sap/cap/fe/ts/sample/ext/utils/Constants';
 import type PageController from 'sap/fe/core/PageController';
+import BaseControllerExtension from 'sap/fe/core/controllerextensions/BaseControllerExtension';
 import type ResourceModel from 'sap/ui/model/resource/ResourceModel';
 import type ResourceBundle from 'sap/base/i18n/ResourceBundle';
 import MessageBox from 'sap/m/MessageBox';
 import type { EditableComments } from 'com/sap/cap/fe/ts/sample/ext/types/gen/CapFeTsSampleServiceModel';
-import { FioriElementsControllerExtensionOverrides } from 'com/sap/cap/fe/ts/sample/ext/types/FioriElements';
 import ExtensionAPI from 'sap/fe/core/ExtensionAPI';
 
 /**
  * @namespace com.sap.cap.fe.ts.sample.ext.controller
  */
-export default class CommentsSection extends ControllerExtension {
-    /**
-     * Workaround for missing the correct controller extension type
-     */
-    protected base!: PageController;
-
+export default class CommentsSection extends BaseControllerExtension<PageController> {
     /**
      * Overrides (sap.ui.core.mvc.ControllerExtension.override)
      */
-    static overrides: FioriElementsControllerExtensionOverrides = {
+    static overrides = BaseControllerExtension.createExtensionOverrides({
         editFlow: {
             // eslint-disable-next-line no-unused-vars
             onBeforeSave: function (this: CommentsSection) {
@@ -35,7 +29,7 @@ export default class CommentsSection extends ControllerExtension {
                 return Promise.resolve();
             }
         }
-    };
+    });
 
     /**
      * Get the fiori elements extension API

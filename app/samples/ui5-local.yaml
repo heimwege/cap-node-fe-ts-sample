@@ -5,7 +5,7 @@ metadata:
 type: application
 framework:
   name: SAPUI5
-  version: 1.136.8
+  version: 1.144.1
   libraries:
     - name: sap.fe.templates
     - name: sap.ui.codeeditor             # Display of Fiori Elements rendering Errors
