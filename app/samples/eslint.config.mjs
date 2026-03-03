@@ -1,6 +1,6 @@
-const fioriTools  = require('@sap-ux/eslint-plugin-fiori-tools');
+import fioriTools from '@sap-ux/eslint-plugin-fiori-tools';
 
-module.exports = [
+export default [
     {
         ignores: [
             '/dist',
