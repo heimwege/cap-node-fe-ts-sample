@@ -14,7 +14,7 @@
       "@wdio/globals",
       "@wdio/globals/types",
       "@wdio/mocha-framework",
-      "wdio-ui5-service/esm",
+      "wdio-ui5-service",
       "expect-webdriverio",
       "webdriverio/build"
     ]

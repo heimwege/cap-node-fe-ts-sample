@@ -41,7 +41,6 @@ QUnit.module("Unit test for Task Management UI (Comments Section)", {
 
         const resourceBundle = new ResourceModel({ bundleUrl: sap.ui.require.toUrl("com/sap/cap/fe/ts/sample") + "/i18n/i18n.properties" }).getResourceBundle() as ResourceBundle;
 
-        //@ts-expect-error: this is an instantiation of a controller stub for testing purposes
         const commentsSectionControllerStub = new CommentsSectionController() as CommentsSectionController;
 
         controllerStub = {
