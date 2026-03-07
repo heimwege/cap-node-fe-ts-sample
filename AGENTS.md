@@ -136,7 +136,7 @@ cap-node-fe-ts-sample/
 npm run build:cds
 ```
 
-This regenerates types in `app/samples/webapp/odata/` based on the service metadata.
+This regenerates types in `app/samples/webapp/ext/types/gen` based on the service metadata.
 
 ## Architecture Decisions
 
