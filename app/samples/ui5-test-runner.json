@@ -1,6 +1,6 @@
 {
   "start": "ui:test:server",
-  "start-timeout": 10000,
+  "start-timeout": 100000,
   "port": 8081,
   "url": "http://localhost:8080/test/testsuite.qunit.html",
   "report-generator": ["$/report.js", "$/junit-xml-report.js"],

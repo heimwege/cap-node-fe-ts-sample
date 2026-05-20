@@ -20,6 +20,7 @@
     "ui:mockserver:proxy:rta": "ui5 serve -o localService/variantsManagement.html#Samples-display",
     "ui:opa5": "ui5 serve -o test/opaTests.qunit.html --config ./ui5-local.yaml",
     "ui:qunit": "ui5 serve -o test/unitTests.qunit.html --config ./ui5-local.yaml",
+    "ui:test:server": "ui5 serve --config ./ui5.yaml",
     "ui:test": "ui5-test-runner",
     "ui5lint": "npx --yes @ui5/linter@latest --fix",
     "wdio:run": "wdio run webapp/test/wdi5/wdio-ui5.conf.ts",
