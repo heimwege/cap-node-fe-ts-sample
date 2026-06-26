@@ -10,6 +10,24 @@ import type { actions as TemplatePageActions, assertions as TemplatePageAssertio
 import type Shell from 'sap/fe/test/Shell';
 import type BaseArrangements from 'sap/fe/test/BaseArrangements';
 
+/**
+ * Enables OPA5 fluent `.and` chaining on page objects and their sub-objects.
+ *
+ * @example
+ * Then.onTheObjectPage.iShouldSeeSection('A').and.iShouldSeeSection('B');
+ * When.onTheObjectPage.onFooter().iExecuteCancel().and.iConfirmCancel();
+ * When.onTheListReport.onTable('').iPressRow({}).and.iDoOther();
+ */
+type WithAnd<T> = {
+    [K in keyof T | 'and']: K extends 'and'
+        ? WithAnd<T>
+        : K extends keyof T
+        ? T[K] extends (...args: infer A) => infer R
+            ? (...args: A) => (R extends Opa5 | object ? (keyof R extends never ? WithAnd<T> : [R] extends [Opa5] ? WithAnd<T> : WithAnd<R>) : WithAnd<T>)
+            : T[K]
+        : never;
+};
+
 type ExperimentalObjectPageAssertions = {
     iSeeLinkWithText: (text: string) => void;
     iSeeContactDetailsPopover: (text: string) => void;
@@ -28,22 +46,26 @@ type Given = Opa5 &
 
 type When = Opa5 &
     BaseArrangements & {
-        onTheListReport: Opa5 & ListReportActions & TemplatePageActions;
-        onTheObjectPage: Opa5 &
-            ObjectPageActions &
-            TemplatePageActions &
-            typeof CustomObjectPageActions &
-            ExperimentalObjectPageActions;
+        onTheListReport: WithAnd<Opa5 & ListReportActions & TemplatePageActions>;
+        onTheObjectPage: WithAnd<
+            Opa5 &
+                ObjectPageActions &
+                TemplatePageActions &
+                typeof CustomObjectPageActions &
+                ExperimentalObjectPageActions
+        >;
         onTheShell: Shell;
     };
 
 type Then = Opa5 &
     BaseArrangements & {
-        onTheListReport: Opa5 & ListReportAssertions & TemplatePageAssertions & typeof CustomListReportAssertions;
-        onTheObjectPage: Opa5 &
-            ObjectPageAssertions &
-            TemplatePageAssertions &
-            typeof CustomObjectPageAssertions &
-            ExperimentalObjectPageAssertions;
+        onTheListReport: WithAnd<Opa5 & ListReportAssertions & TemplatePageAssertions & typeof CustomListReportAssertions>;
+        onTheObjectPage: WithAnd<
+            Opa5 &
+                ObjectPageAssertions &
+                TemplatePageAssertions &
+                typeof CustomObjectPageAssertions &
+                ExperimentalObjectPageAssertions
+        >;
         onTheShell: Shell;
     };
