@@ -23,16 +23,16 @@ function journey() {
     );
 
     opaTest('Should see the Object Page Sections', function (Given: Given, When: When, Then: Then) {
-        Then.onTheObjectPage.iShouldSeeSection('generalInformation');
-        Then.onTheObjectPage.iShouldSeeSection('CommentsSection');
+        Then.onTheObjectPage.iShouldSeeSection('generalInformation').and.iShouldSeeSection('CommentsSection');
     });
 
     opaTest('Should see the Object Page in edit mode', function (Given: Given, When: When, Then: Then) {
         When.onTheObjectPage.onHeader().iExecuteEdit();
 
-        Then.onTheObjectPage.iShouldSeeSection('EditableHeaderSection');
-        Then.onTheObjectPage.iShouldSeeSection('generalInformation');
-        Then.onTheObjectPage.iShouldSeeSection('CommentsSection');
+        Then.onTheObjectPage
+            .iShouldSeeSection('EditableHeaderSection')
+            .and.iShouldSeeSection('generalInformation')
+            .and.iShouldSeeSection('CommentsSection');
     });
 
     opaTest('Should see the editable header content', function (Given: Given, When: When, Then: Then) {
@@ -53,8 +53,7 @@ function journey() {
     opaTest('Should be able to add a comment and cancel', function (Given: Given, When: When, Then: Then) {
         When.onTheObjectPage.onHeader().iExecuteEdit();
         When.onTheObjectPage.iAddComment('Test2');
-        When.onTheObjectPage.onFooter().iExecuteCancel();
-        When.onTheObjectPage.onFooter().iConfirmCancel();
+        When.onTheObjectPage.onFooter().iExecuteCancel().and.iConfirmCancel();
 
         Then.onTheObjectPage.iShouldSeeComments(2);
     });
@@ -62,8 +61,7 @@ function journey() {
     opaTest('Should be able to delete a comment and cancel', function (Given: Given, When: When, Then: Then) {
         When.onTheObjectPage.onHeader().iExecuteEdit();
         When.onTheObjectPage.iDeleteComment(0);
-        When.onTheObjectPage.onFooter().iExecuteCancel();
-        When.onTheObjectPage.onFooter().iConfirmCancel();
+        When.onTheObjectPage.onFooter().iExecuteCancel().and.iConfirmCancel();
 
         Then.onTheObjectPage.iShouldSeeComments(2);
     });
@@ -71,8 +69,7 @@ function journey() {
     opaTest('Should be able to edit a comment and cancel', function (Given: Given, When: When, Then: Then) {
         When.onTheObjectPage.onHeader().iExecuteEdit();
         When.onTheObjectPage.iEditComment(0, 'TestTest');
-        When.onTheObjectPage.onFooter().iExecuteCancel();
-        When.onTheObjectPage.onFooter().iConfirmCancel();
+        When.onTheObjectPage.onFooter().iExecuteCancel().and.iConfirmCancel();
 
         Then.onTheObjectPage.iShouldSeeComments(2);
     });

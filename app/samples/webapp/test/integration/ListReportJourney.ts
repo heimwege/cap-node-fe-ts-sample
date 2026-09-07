@@ -4,8 +4,6 @@ import runner from './pages/JourneyRunner';
 
 // Currently open type errors:
 // - sap.fe.test onTable "vTableIdentifier" should be optional
-// - opa5.waitFor returns type Opa5 -> chaining of custom actions/assertions not possible
-// - sap.fe.test actions/assertions return type "object" does not contain "and" -> chaining not possible
 
 function journey() {
     // there should be no blanks in Qunit module name in case of a piper based traceability mapping
@@ -29,29 +27,26 @@ function journey() {
     opaTest('Should be able to adapt filters', function (Given: Given, When: When, Then: Then) {
         When.onTheListReport.onFilterBar().iOpenFilterAdaptation();
 
-        Then.onTheListReport.onFilterBar().iCheckAdaptationFilterField({ property: 'modifiedBy' }, { selected: false });
-        Then.onTheListReport.onFilterBar().iCheckAdaptationFilterField({ property: 'modifiedAt' }, { selected: false });
-        Then.onTheListReport.onFilterBar().iCheckAdaptationFilterField({ property: 'createdBy' }, { selected: false });
-        Then.onTheListReport.onFilterBar().iCheckAdaptationFilterField({ property: 'createdAt' }, { selected: false });
-
-        Then.onTheListReport.onFilterBar().iConfirmFilterAdaptation();
+        Then.onTheListReport.onFilterBar()
+            .iCheckAdaptationFilterField({ property: 'modifiedBy' }, { selected: false })
+            .and.iCheckAdaptationFilterField({ property: 'modifiedAt' }, { selected: false })
+            .and.iCheckAdaptationFilterField({ property: 'createdBy' }, { selected: false })
+            .and.iCheckAdaptationFilterField({ property: 'createdAt' }, { selected: false })
+            .and.iConfirmFilterAdaptation();
     });
 
     opaTest('Should be able to create and delete samples', function (Given: Given, When: When, Then: Then) {
-        Then.onTheListReport.onTable('').iCheckCreate({ visible: true });
-        Then.onTheListReport.onTable('').iCheckDelete({ visible: true });
+        Then.onTheListReport.onTable('').iCheckCreate({ visible: true }).and.iCheckDelete({ visible: true });
     });
 
     opaTest('Should be able to filter', function (Given: Given, When: When, Then: Then) {
-        When.onTheListReport.onFilterBar().iChangeFilterField({ property: 'name' }, 'Test', true);
-        When.onTheListReport.onFilterBar().iExecuteSearch();
+        When.onTheListReport.onFilterBar().iChangeFilterField({ property: 'name' }, 'Test', true).and.iExecuteSearch();
 
         Then.onTheListReport.onTable('').iCheckRows(undefined, 1);
     });
 
     opaTest('Should be able to remove a filter', function (Given: Given, When: When, Then: Then) {
-        When.onTheListReport.onFilterBar().iChangeFilterField({ property: 'name' }, '', true);
-        When.onTheListReport.onFilterBar().iExecuteSearch();
+        When.onTheListReport.onFilterBar().iChangeFilterField({ property: 'name' }, '', true).and.iExecuteSearch();
 
         Then.onTheListReport.onTable('').iCheckRows(undefined, 3);
     });
